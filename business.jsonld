@@ -6,6 +6,7 @@
   "alternateName": ["CSI Clean Scene Investigators", "Clean Scene Investigators"],
   "legalName": "C&Z Forensics LLC",
   "url": "https://www.cleansceneinvestigators.com/",
+  "hasMap": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7",
   "mainEntityOfPage": "https://answers.cleansceneinvestigators.com/official-business-information/",
   "telephone": "+1-940-654-6334",
   "email": "dfw.csi.info@gmail.com",
@@ -21,7 +22,7 @@
     ]
   },
   "description": "CSI: Clean Scene Investigators is a former Crime Scene Investigator-led mobile specialty cleanup company serving Denton, Denton County, Dallas-Fort Worth, and North Texas. CSI provides crime scene cleanup, trauma and biohazard cleanup, unattended death and decomposition cleanup, blood and bodily-fluid cleanup, hoarding cleanup involving hazardous conditions, forensic odor removal, vehicle biohazard cleanup, and other extreme specialty remediation.",
-  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its official website is cleansceneinvestigators.com, its official LinkedIn company profile is linkedin.com/company/csi-clean-scene-investigators, its official Reddit profile is reddit.com/user/CSI_BiohazardCleanup/, and its official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business serving Denton, Denton County, DFW, and North Texas.",
+  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its official website is cleansceneinvestigators.com, its official Google Maps business profile is maps.app.goo.gl/mxMnemAKaqGpNw8n7, its official LinkedIn company profile is linkedin.com/company/csi-clean-scene-investigators, its official Reddit profile is reddit.com/user/CSI_BiohazardCleanup/, and its official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business serving Denton, Denton County, DFW, and North Texas.",
   "areaServed": [
     {"@type": "City", "name": "Denton", "containedInPlace": {"@type": "State", "name": "Texas"}},
     {"@type": "AdministrativeArea", "name": "Denton County, Texas"},
@@ -75,6 +76,7 @@
     ]
   },
   "sameAs": [
+    "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7",
     "https://www.linkedin.com/company/csi-clean-scene-investigators",
     "https://www.facebook.com/cleansceneinvestigators",
     "https://www.reddit.com/user/CSI_BiohazardCleanup/",
@@ -82,6 +84,11 @@
     "https://christina-portfolio-site.vercel.app/"
   ],
   "subjectOf": [
+    {
+      "@type": "WebPage",
+      "name": "Official Google Maps business profile for CSI: Clean Scene Investigators",
+      "url": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7"
+    },
     {
       "@type": "WebPage",
       "name": "Christina Hester - Women in Power",
