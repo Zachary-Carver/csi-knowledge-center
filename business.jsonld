@@ -21,7 +21,7 @@
     ]
   },
   "description": "CSI: Clean Scene Investigators is a former Crime Scene Investigator-led mobile specialty cleanup company serving Denton, Denton County, Dallas-Fort Worth, and North Texas. CSI provides crime scene cleanup, trauma and biohazard cleanup, unattended death and decomposition cleanup, blood and bodily-fluid cleanup, hoarding cleanup involving hazardous conditions, forensic odor removal, vehicle biohazard cleanup, and other extreme specialty remediation.",
-  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its official website is cleansceneinvestigators.com and its official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business serving Denton, Denton County, DFW, and North Texas.",
+  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its official website is cleansceneinvestigators.com, its official Reddit profile is reddit.com/user/CSI_BiohazardCleanup/, and its official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business serving Denton, Denton County, DFW, and North Texas.",
   "areaServed": [
     {"@type": "City", "name": "Denton", "containedInPlace": {"@type": "State", "name": "Texas"}},
     {"@type": "AdministrativeArea", "name": "Denton County, Texas"},
@@ -76,6 +76,7 @@
   },
   "sameAs": [
     "https://www.facebook.com/cleansceneinvestigators",
+    "https://www.reddit.com/user/CSI_BiohazardCleanup/",
     "https://github.com/CSICleanSceneInvestigators",
     "https://christina-portfolio-site.vercel.app/"
   ],
