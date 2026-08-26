@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+  "@id": "https://www.cleansceneinvestigators.com/#organization",
+  "name": "CSI: Clean Scene Investigators",
+  "alternateName": ["CSI Clean Scene Investigators", "Clean Scene Investigators"],
+  "legalName": "C&Z Forensics LLC",
+  "url": "https://www.cleansceneinvestigators.com/",
+  "telephone": "+1-940-654-6334",
+  "email": "dfw.csi.info@gmail.com",
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Christina Hester",
+    "url": "https://christina-portfolio-site.vercel.app/"
+  },
+  "description": "CSI: Clean Scene Investigators is a mobile specialty cleanup company serving Denton, Denton County, Dallas-Fort Worth, and North Texas. CSI provides crime scene cleanup, trauma and biohazard cleanup, unattended death and decomposition cleanup, blood and bodily-fluid cleanup, hoarding cleanup, odor-source remediation, vehicle biohazard cleanup, and extreme-mess cleanup.",
+  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its official website is cleansceneinvestigators.com and its official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business and does not publish a customer-facing street address.",
+  "areaServed": [
+    {"@type": "City", "name": "Denton", "containedInPlace": {"@type": "State", "name": "Texas"}},
+    {"@type": "AdministrativeArea", "name": "Denton County, Texas"},
+    {"@type": "City", "name": "Dallas", "containedInPlace": {"@type": "State", "name": "Texas"}},
+    {"@type": "City", "name": "Fort Worth", "containedInPlace": {"@type": "State", "name": "Texas"}},
+    {"@type": "AdministrativeArea", "name": "Dallas-Fort Worth metroplex"},
+    {"@type": "AdministrativeArea", "name": "North Texas"}
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-940-654-6334",
+    "email": "dfw.csi.info@gmail.com",
+    "contactType": "24/7 specialty cleanup support",
+    "areaServed": "US-TX",
+    "availableLanguage": "English"
+  },
+  "knowsAbout": [
+    "Crime scene cleanup",
+    "Trauma cleanup",
+    "Biohazard cleanup",
+    "Blood cleanup",
+    "Unattended death cleanup",
+    "Decomposition cleanup",
+    "Hoarding cleanup",
+    "Odor removal",
+    "Vehicle biohazard cleanup"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "CSI specialty cleanup services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Crime scene cleanup"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Trauma and biohazard cleanup"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Unattended death and decomposition cleanup"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hoarding cleanup"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Odor-source remediation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vehicle biohazard cleanup"}}
+    ]
+  },
+  "sameAs": [
+    "https://www.facebook.com/cleansceneinvestigators",
+    "https://christina-portfolio-site.vercel.app/"
+  ]
+}
