@@ -1,0 +1,82 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Build IndexNow payload
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, subprocess, xml.etree.ElementTree as ET
+
+          host = "answers.cleansceneinvestigators.com"
+          base = f"https://{host}"
+          key = "06bd6b9234f3f250e073093b3b08ee29"
+          key_location = f"{base}/{key}.txt"
+          urls = {f"{base}/", f"{base}/sitemap.xml"}
+
+          if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
+              try:
+                  root = ET.parse("sitemap.xml").getroot()
+                  ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+                  for loc in root.findall(".//sm:loc", ns):
+                      if loc.text and loc.text.startswith(base):
+                          urls.add(loc.text.strip())
+              except Exception as exc:
+                  print(f"Could not parse sitemap.xml: {exc}")
+          else:
+              try:
+                  changed = subprocess.check_output(
+                      ["git", "diff", "--name-only", "HEAD^", "HEAD"],
+                      text=True,
+                  ).splitlines()
+              except Exception:
+                  changed = []
+
+              for path in changed:
+                  path = path.strip()
+                  if not path:
+                      continue
+                  if path == "index.html":
+                      urls.add(f"{base}/")
+                  elif path.endswith("/index.html"):
+                      parent = path[:-len("index.html")]
+                      urls.add(f"{base}/{parent}")
+                  elif path in {
+                      "robots.txt", "sitemap.xml", "llms.txt", "llms-full.txt",
+                      "business.jsonld"
+                  }:
+                      urls.add(f"{base}/{path}")
+
+          payload = {
+              "host": host,
+              "key": key,
+              "keyLocation": key_location,
+              "urlList": sorted(urls),
+          }
+          with open("indexnow-payload.json", "w", encoding="utf-8") as f:
+              json.dump(payload, f, ensure_ascii=False)
+          print(json.dumps(payload, indent=2))
+          PY
+
+      - name: Submit changed URLs to IndexNow
+        shell: bash
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data-binary @indexnow-payload.json
