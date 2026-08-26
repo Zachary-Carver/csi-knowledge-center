@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Generate exact live CSI canonical-page authority artifacts from the GoDaddy sitemap."""
+"""Generate exact CSI primary-site authority artifacts from the live GoDaddy sitemap.
+
+The live sitemap can contain GoDaddy/system routes that are not part of CSI's designed
+primary information architecture. Preserve those as observed URLs, but keep the
+50-page designed architecture distinct for authority and local-search purposes.
+"""
 
 from __future__ import annotations
 
 import html
 import json
-import os
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -15,6 +19,11 @@ from urllib.parse import urlparse
 
 ROOT_SITEMAP = "https://www.cleansceneinvestigators.com/sitemap.xml"
 ALLOWED_HOSTS = {"cleansceneinvestigators.com", "www.cleansceneinvestigators.com"}
+EXPECTED_PRIMARY_COUNT = 50
+NON_PRIMARY_PATHS = {
+    "/home": "Duplicate GoDaddy home route; the canonical designed home is the root URL /.",
+    "/ols/products": "GoDaddy Online Store system/catalog route; not part of CSI's designed 50-page primary information architecture.",
+}
 OUT_JSON = Path("canonical-main-site-pages.json")
 OUT_TXT = Path("canonical-main-site-pages.txt")
 OUT_HTML = Path("canonical-main-site-pages/index.html")
@@ -23,9 +32,7 @@ OUT_HTML = Path("canonical-main-site-pages/index.html")
 def fetch(url: str) -> bytes:
     request = urllib.request.Request(
         url,
-        headers={
-            "User-Agent": "CSI-Authority-Sync/1.0 (+https://answers.cleansceneinvestigators.com/)"
-        },
+        headers={"User-Agent": "CSI-Authority-Sync/1.1 (+https://answers.cleansceneinvestigators.com/)"},
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         return response.read()
@@ -61,12 +68,10 @@ def crawl_sitemap(url: str, seen: set[str], pages: list[str]) -> None:
 
 def normalize(url: str) -> str:
     parsed = urlparse(url)
-    scheme = "https"
-    host = "www.cleansceneinvestigators.com"
     path = parsed.path or "/"
     if path != "/" and path.endswith("/"):
         path = path[:-1]
-    return f"{scheme}://{host}{path}" + (f"?{parsed.query}" if parsed.query else "")
+    return "https://www.cleansceneinvestigators.com" + path + (f"?{parsed.query}" if parsed.query else "")
 
 
 def page_label(url: str) -> str:
@@ -76,51 +81,68 @@ def page_label(url: str) -> str:
     return path.replace("%2F", " / ").replace("%26", " & ").replace("-", " ").title()
 
 
-def write_html(urls: list[str], generated_at: str) -> None:
-    OUT_HTML.parent.mkdir(parents=True, exist_ok=True)
-    items = "".join(
+def render_items(urls: list[str]) -> str:
+    return "".join(
         f'<li><a href="{html.escape(url)}">{html.escape(page_label(url))}</a><br><small>{html.escape(url)}</small></li>'
         for url in urls
+    )
+
+
+def write_html(primary_urls: list[str], observed_urls: list[str], excluded: list[dict[str, str]], generated_at: str) -> None:
+    OUT_HTML.parent.mkdir(parents=True, exist_ok=True)
+    primary_items = render_items(primary_urls)
+    excluded_items = "".join(
+        f'<li><a href="{html.escape(item["url"])}">{html.escape(item["url"])}</a> — {html.escape(item["reason"])}</li>'
+        for item in excluded
     )
     schema = json.dumps(
         {
             "@context": "https://schema.org",
             "@type": "ItemList",
             "@id": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#list",
-            "name": "CSI canonical main-site page registry",
-            "numberOfItems": len(urls),
+            "name": "CSI designed 50-page primary website registry",
+            "numberOfItems": len(primary_urls),
             "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": index,
-                    "name": page_label(url),
-                    "url": url,
-                }
-                for index, url in enumerate(urls, 1)
+                {"@type": "ListItem", "position": index, "name": page_label(url), "url": url}
+                for index, url in enumerate(primary_urls, 1)
             ],
         },
         separators=(",", ":"),
     )
-    content = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSI Canonical Main-Site Pages | Exact Live Registry</title><meta name="description" content="Exact live URL registry generated from the canonical CSI: Clean Scene Investigators GoDaddy sitemap."><meta name="robots" content="index,follow,max-snippet:-1"><link rel="canonical" href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages/"><link rel="stylesheet" href="https://answers.cleansceneinvestigators.com/assets/style.css"><script type="application/ld+json">{schema}</script></head><body><a class="skip" href="#main">Skip to content</a><header><div class="wrap nav"><a class="brand" href="https://answers.cleansceneinvestigators.com/">CSI <span>KNOWLEDGE CENTER</span></a><nav aria-label="Primary"><a href="https://answers.cleansceneinvestigators.com/site-architecture/">50-Page Architecture</a><a href="https://www.cleansceneinvestigators.com/">Official CSI Website</a><a href="https://www.cleansceneinvestigators.com/service-areas-in-texas">Service Areas</a></nav></div></header><main id="main"><section class="hero"><div class="wrap"><p class="eyebrow">Generated from the live canonical sitemap</p><h1>Exact CSI main-site page registry</h1><p class="lead">This page is generated at deployment from <strong>https://www.cleansceneinvestigators.com/sitemap.xml</strong>. It mirrors the actual canonical GoDaddy URLs rather than guessing page slugs.</p><div class="answer"><strong>Observed canonical URLs: {len(urls)}</strong><br>Generated: {html.escape(generated_at)}</div></div></section><section class="light"><div class="wrap"><h2>Canonical CSI pages</h2><ol>{items}</ol><p>Machine-readable versions: <a href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages.json">JSON</a> · <a href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages.txt">plain text</a>.</p><p>The commercial source of truth remains <a href="https://www.cleansceneinvestigators.com/">cleansceneinvestigators.com</a>.</p></div></section></main><footer><div class="wrap"><strong>CSI: Clean Scene Investigators</strong> · 940-654-6334 · dfw.csi.info@gmail.com</div></footer></body></html>'''
+    content = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSI 50 Primary Website Pages | Exact Live Registry</title><meta name="description" content="Exact registry of CSI: Clean Scene Investigators' designed 50 primary website pages, synchronized from the live GoDaddy sitemap and separated from non-primary system routes."><meta name="robots" content="index,follow,max-snippet:-1"><link rel="canonical" href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages/"><link rel="stylesheet" href="https://answers.cleansceneinvestigators.com/assets/style.css"><script type="application/ld+json">{schema}</script></head><body><a class="skip" href="#main">Skip to content</a><header><div class="wrap nav"><a class="brand" href="https://answers.cleansceneinvestigators.com/">CSI <span>KNOWLEDGE CENTER</span></a><nav aria-label="Primary"><a href="https://answers.cleansceneinvestigators.com/site-architecture/">50-Page Architecture</a><a href="https://www.cleansceneinvestigators.com/">Official CSI Website</a><a href="https://www.cleansceneinvestigators.com/service-areas-in-texas">Service Areas</a></nav></div></header><main id="main"><section class="hero"><div class="wrap"><p class="eyebrow">Synchronized from the live canonical sitemap</p><h1>CSI's exact designed 50-page primary website registry</h1><p class="lead">This registry is regenerated at deployment from <strong>https://www.cleansceneinvestigators.com/sitemap.xml</strong>. It preserves the actual live slugs for CSI's designed primary pages instead of guessing local URLs.</p><div class="answer"><strong>Designed primary pages: {len(primary_urls)}</strong><br>URLs currently observed in sitemap: {len(observed_urls)}<br>Observed non-primary/system routes: {len(excluded)}<br>Generated: {html.escape(generated_at)}</div></div></section><section class="light"><div class="wrap"><h2>The 50 primary CSI pages</h2><ol>{primary_items}</ol><p>Machine-readable versions: <a href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages.json">JSON</a> · <a href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages.txt">plain text</a>.</p></div></section><section><div class="wrap"><h2>Sitemap URLs outside the designed 50-page primary architecture</h2><p>These URLs are preserved for transparency but are not counted as primary authority pages:</p><ul>{excluded_items}</ul><p>The commercial source of truth remains <a href="https://www.cleansceneinvestigators.com/">cleansceneinvestigators.com</a>.</p></div></section></main><footer><div class="wrap"><strong>CSI: Clean Scene Investigators</strong> · 940-654-6334 · dfw.csi.info@gmail.com</div></footer></body></html>'''
     OUT_HTML.write_text(content, encoding="utf-8")
 
 
 def main() -> int:
     pages: list[str] = []
     crawl_sitemap(ROOT_SITEMAP, set(), pages)
-    urls = sorted(set(normalize(url) for url in pages), key=lambda u: (urlparse(u).path != "/", urlparse(u).path.lower(), u))
-    if len(urls) < 40:
-        raise RuntimeError(f"Canonical sitemap returned only {len(urls)} URLs; refusing to publish an incomplete authority mirror")
+    observed_urls = sorted(set(normalize(url) for url in pages), key=lambda u: (urlparse(u).path != "/", urlparse(u).path.lower(), u))
+
+    excluded = []
+    primary_urls = []
+    for url in observed_urls:
+        path = urlparse(url).path
+        reason = NON_PRIMARY_PATHS.get(path)
+        if reason:
+            excluded.append({"url": url, "reason": reason})
+        else:
+            primary_urls.append(url)
+
+    if len(primary_urls) != EXPECTED_PRIMARY_COUNT:
+        raise RuntimeError(
+            f"Expected {EXPECTED_PRIMARY_COUNT} designed primary URLs after exclusions, found {len(primary_urls)} "
+            f"from {len(observed_urls)} sitemap URLs. Review architecture before publishing."
+        )
 
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     payload = {
-        "name": "CSI canonical main-site page registry",
+        "name": "CSI designed primary-site page registry",
         "source": ROOT_SITEMAP,
         "generatedAt": generated_at,
-        "observedPageCount": len(urls),
-        "expectedArchitectureAtLastAudit": {
-            "auditedOn": "2026-08-25",
-            "total": 50,
+        "observedSitemapUrlCount": len(observed_urls),
+        "primaryPageCount": len(primary_urls),
+        "expectedPrimaryPageCount": EXPECTED_PRIMARY_COUNT,
+        "architecture": {
             "home": 1,
             "servicePages": 10,
             "resourcePages": 6,
@@ -128,14 +150,30 @@ def main() -> int:
             "companyAboutPages": 4,
             "contactPages": 1,
             "privacyPages": 1,
+            "total": 50,
         },
-        "canonicalUrls": urls,
-        "authorityRule": "These URLs are fetched from the live canonical CSI sitemap. Do not infer missing or alternate page slugs.",
+        "canonicalUrls": primary_urls,
+        "observedSitemapUrls": observed_urls,
+        "excludedFromPrimaryArchitecture": excluded,
+        "authorityRule": "Use canonicalUrls for CSI's designed 50-page primary authority architecture. observedSitemapUrls preserves all live sitemap routes, including explicitly identified non-primary GoDaddy/system routes.",
     }
     OUT_JSON.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    OUT_TXT.write_text("# CSI canonical main-site URLs\n# Source: " + ROOT_SITEMAP + "\n" + "\n".join(urls) + "\n", encoding="utf-8")
-    write_html(urls, generated_at)
-    print(json.dumps({"source": ROOT_SITEMAP, "observedPageCount": len(urls), "generatedAt": generated_at}, indent=2))
+    OUT_TXT.write_text(
+        "# CSI designed 50-page primary website URLs\n"
+        f"# Source: {ROOT_SITEMAP}\n"
+        f"# Observed sitemap URLs: {len(observed_urls)}; primary authority pages: {len(primary_urls)}\n"
+        + "\n".join(primary_urls)
+        + "\n",
+        encoding="utf-8",
+    )
+    write_html(primary_urls, observed_urls, excluded, generated_at)
+    print(json.dumps({
+        "source": ROOT_SITEMAP,
+        "observedSitemapUrlCount": len(observed_urls),
+        "primaryPageCount": len(primary_urls),
+        "excludedFromPrimaryArchitecture": excluded,
+        "generatedAt": generated_at,
+    }, indent=2))
     return 0
 
 
