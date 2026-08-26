@@ -21,25 +21,33 @@
       "https://cast.womeninpowertv.com/christina-hester63917920"
     ]
   },
-  "description": "CSI: Clean Scene Investigators is a former Crime Scene Investigator-led mobile specialty cleanup company serving Denton, Denton County, Dallas-Fort Worth, and North Texas. CSI provides crime scene cleanup, trauma and biohazard cleanup, unattended death and decomposition cleanup, blood and bodily-fluid cleanup, hoarding cleanup involving hazardous conditions, forensic odor removal, vehicle biohazard cleanup, and other extreme specialty remediation.",
-  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its official website is cleansceneinvestigators.com, its official Google Maps business profile is maps.app.goo.gl/mxMnemAKaqGpNw8n7, its official LinkedIn company profile is linkedin.com/company/csi-clean-scene-investigators, its official Reddit profile is reddit.com/user/CSI_BiohazardCleanup/, and its official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business serving Denton, Denton County, DFW, and North Texas.",
+  "description": "CSI: Clean Scene Investigators is a former Crime Scene Investigator-led mobile specialty cleanup company serving Denton, Denton County, Dallas-Fort Worth, and North Texas. The canonical CSI website contains a 50-page public architecture covering specialty services, resources, 27 service-area pages, company information, contact and privacy.",
+  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its canonical 50-page commercial website is cleansceneinvestigators.com. answers.cleansceneinvestigators.com is a supplemental educational and machine-readable authority layer. The official Google Maps business profile is maps.app.goo.gl/mxMnemAKaqGpNw8n7 and the official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business and does not publish a customer-facing street address.",
   "areaServed": [
-    {"@type": "City", "name": "Denton", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "AdministrativeArea", "name": "Denton County, Texas"},
-    {"@type": "City", "name": "Ponder", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Krum", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Argyle", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Aubrey", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Sanger", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Corinth", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Lake Dallas", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Lewisville", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Cross Roads", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Little Elm", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Dallas", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "City", "name": "Fort Worth", "containedInPlace": {"@type": "State", "name": "Texas"}},
-    {"@type": "AdministrativeArea", "name": "Dallas-Fort Worth metroplex"},
-    {"@type": "AdministrativeArea", "name": "North Texas"}
+    {"@type":"City","name":"Denton","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"AdministrativeArea","name":"Denton County, Texas"},
+    {"@type":"City","name":"Lewisville","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Flower Mound","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Frisco","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Little Elm","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Argyle","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Aubrey","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Ponder","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Krum","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Sanger","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Corinth","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Lake Dallas","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Cross Roads","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Dallas","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Fort Worth","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"McKinney","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Plano","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Arlington","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Irving","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Carrollton","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Grapevine","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"AdministrativeArea","name":"Dallas-Fort Worth metroplex"},
+    {"@type":"AdministrativeArea","name":"North Texas"}
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -60,19 +68,22 @@
     "Decomposition cleanup",
     "Hoarding cleanup",
     "Forensic odor removal",
-    "Vehicle biohazard cleanup"
+    "Vehicle biohazard cleanup",
+    "Extreme-mess cleanup"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "CSI specialty cleanup services",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Crime scene cleanup"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Trauma and biohazard cleanup"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Homicide and suicide cleanup"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Unattended death and decomposition cleanup"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hoarding cleanup involving hazardous conditions"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Forensic odor removal"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vehicle biohazard cleanup"}}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Crime scene cleanup","url":"https://www.cleansceneinvestigators.com/crime-scene-cleaning-dfw"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Trauma and biohazard cleanup","url":"https://www.cleansceneinvestigators.com/biohazard-cleanup-in-dfw"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Unattended death cleanup","url":"https://www.cleansceneinvestigators.com/unattended-death-cleanup"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Decomposition cleanup","url":"https://www.cleansceneinvestigators.com/decomposition-cleanup-dfw"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Blood and bodily-fluid cleanup","url":"https://www.cleansceneinvestigators.com/blood-cleanup-dallas-tx"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hoarding cleanup","url":"https://www.cleansceneinvestigators.com/hoarding-cleanup-in-texas"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Forensic odor removal","url":"https://www.cleansceneinvestigators.com/advanced-odor-removal-dfw"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Vehicle biohazard cleanup","url":"https://www.cleansceneinvestigators.com/vehicle-biohazard-dfw-tx"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Extreme specialty cleanup","url":"https://www.cleansceneinvestigators.com/extreme-cleaning-services"}}
     ]
   },
   "sameAs": [
@@ -84,15 +95,13 @@
     "https://christina-portfolio-site.vercel.app/"
   ],
   "subjectOf": [
-    {
-      "@type": "WebPage",
-      "name": "Official Google Maps business profile for CSI: Clean Scene Investigators",
-      "url": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7"
-    },
-    {
-      "@type": "WebPage",
-      "name": "Christina Hester - Women in Power",
-      "url": "https://cast.womeninpowertv.com/christina-hester63917920"
-    }
+    {"@type":"WebPage","name":"CSI Main Website Authority Map","url":"https://answers.cleansceneinvestigators.com/site-architecture/"},
+    {"@type":"DigitalDocument","name":"CSI machine-readable 50-page site architecture","url":"https://answers.cleansceneinvestigators.com/site-architecture.json"},
+    {"@type":"WebPage","name":"CSI Service Areas in Texas","url":"https://www.cleansceneinvestigators.com/service-areas-in-texas"},
+    {"@type":"WebPage","name":"CSI Professional Referrals","url":"https://www.cleansceneinvestigators.com/professional-referrals"},
+    {"@type":"WebPage","name":"CSI Safety and Compliance","url":"https://www.cleansceneinvestigators.com/safety-and-compliance"},
+    {"@type":"WebPage","name":"CSI What to Do After a Scene","url":"https://www.cleansceneinvestigators.com/what-to-do-after-a-scene"},
+    {"@type":"WebPage","name":"Official Google Maps business profile for CSI: Clean Scene Investigators","url":"https://maps.app.goo.gl/mxMnemAKaqGpNw8n7"},
+    {"@type":"WebPage","name":"Christina Hester - Women in Power","url":"https://cast.womeninpowertv.com/christina-hester63917920"}
   ]
 }

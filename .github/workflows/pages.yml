@@ -23,6 +23,25 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+
+      - name: Sync exact canonical CSI page registry from live GoDaddy sitemap
+        run: python scripts/sync-main-site-authority.py
+
+      - name: Verify canonical page registry
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("canonical-main-site-pages.json").read_text(encoding="utf-8"))
+          count = data["observedPageCount"]
+          print(f"Exact live CSI canonical pages discovered: {count}")
+          if count < 40:
+              raise SystemExit("Canonical page registry is unexpectedly incomplete")
+          if not Path("canonical-main-site-pages/index.html").exists():
+              raise SystemExit("Generated canonical-page HTML index is missing")
+          PY
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
       - name: Upload static site

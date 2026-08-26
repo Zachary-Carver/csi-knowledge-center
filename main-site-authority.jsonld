@@ -1,0 +1,99 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+      "@id": "https://www.cleansceneinvestigators.com/#organization",
+      "name": "CSI: Clean Scene Investigators",
+      "legalName": "C&Z Forensics LLC",
+      "url": "https://www.cleansceneinvestigators.com/",
+      "hasMap": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7",
+      "telephone": "+1-940-654-6334",
+      "email": "dfw.csi.info@gmail.com",
+      "areaServed": [
+        {"@type":"City","name":"Denton"},
+        {"@type":"AdministrativeArea","name":"Denton County, Texas"},
+        {"@type":"AdministrativeArea","name":"Dallas-Fort Worth metroplex"},
+        {"@type":"AdministrativeArea","name":"North Texas"}
+      ],
+      "subjectOf": [
+        {"@id":"https://answers.cleansceneinvestigators.com/site-architecture/#page"}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.cleansceneinvestigators.com/#website",
+      "url": "https://www.cleansceneinvestigators.com/",
+      "name": "CSI: Clean Scene Investigators",
+      "publisher": {"@id":"https://www.cleansceneinvestigators.com/#organization"},
+      "mainEntity": {"@id":"https://www.cleansceneinvestigators.com/#site-architecture"}
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.cleansceneinvestigators.com/#site-architecture",
+      "name": "CSI canonical website architecture",
+      "numberOfItems": 50,
+      "description": "The canonical CSI public website contains 50 primary live pages: 1 home, 10 service pages, 6 resource pages, 27 service-area pages, 4 company/about pages, 1 contact page and 1 privacy page.",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","url":"https://www.cleansceneinvestigators.com/"},
+        {"@type":"ListItem","position":2,"name":"Crime Scene Cleaning","url":"https://www.cleansceneinvestigators.com/crime-scene-cleaning-dfw"},
+        {"@type":"ListItem","position":3,"name":"Biohazard Cleanup","url":"https://www.cleansceneinvestigators.com/biohazard-cleanup-in-dfw"},
+        {"@type":"ListItem","position":4,"name":"Unattended Death Cleanup","url":"https://www.cleansceneinvestigators.com/unattended-death-cleanup"},
+        {"@type":"ListItem","position":5,"name":"Decomposition Cleanup","url":"https://www.cleansceneinvestigators.com/decomposition-cleanup-dfw"},
+        {"@type":"ListItem","position":6,"name":"Blood Cleanup","url":"https://www.cleansceneinvestigators.com/blood-cleanup-dallas-tx"},
+        {"@type":"ListItem","position":7,"name":"Hoarding Cleanup","url":"https://www.cleansceneinvestigators.com/hoarding-cleanup-in-texas"},
+        {"@type":"ListItem","position":8,"name":"Advanced Odor Removal","url":"https://www.cleansceneinvestigators.com/advanced-odor-removal-dfw"},
+        {"@type":"ListItem","position":9,"name":"Vehicle Biohazard Cleanup","url":"https://www.cleansceneinvestigators.com/vehicle-biohazard-dfw-tx"},
+        {"@type":"ListItem","position":10,"name":"Extreme Cleaning Services","url":"https://www.cleansceneinvestigators.com/extreme-cleaning-services"},
+        {"@type":"ListItem","position":11,"name":"Service Areas in Texas","url":"https://www.cleansceneinvestigators.com/service-areas-in-texas"},
+        {"@type":"ListItem","position":12,"name":"Professional Referrals","url":"https://www.cleansceneinvestigators.com/professional-referrals"},
+        {"@type":"ListItem","position":13,"name":"Property Managers / Landlords","url":"https://www.cleansceneinvestigators.com/property-manager%2Flandlord-1"},
+        {"@type":"ListItem","position":14,"name":"Safety and Compliance","url":"https://www.cleansceneinvestigators.com/safety-and-compliance"},
+        {"@type":"ListItem","position":15,"name":"Insurance and Payment Help","url":"https://www.cleansceneinvestigators.com/insurance-%26-payment-help"},
+        {"@type":"ListItem","position":16,"name":"What to Do After a Scene","url":"https://www.cleansceneinvestigators.com/what-to-do-after-a-scene"},
+        {"@type":"ListItem","position":17,"name":"Client Reviews","url":"https://www.cleansceneinvestigators.com/client-reviews"},
+        {"@type":"ListItem","position":18,"name":"About CSI","url":"https://www.cleansceneinvestigators.com/about-us"},
+        {"@type":"ListItem","position":19,"name":"Contact CSI","url":"https://www.cleansceneinvestigators.com/contact-us"}
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.cleansceneinvestigators.com/service-areas-in-texas#service-area-architecture",
+      "url": "https://www.cleansceneinvestigators.com/service-areas-in-texas",
+      "name": "CSI Service Areas in Texas",
+      "about": {"@id":"https://www.cleansceneinvestigators.com/#organization"},
+      "description": "Canonical parent for CSI's 27 live service-area pages across Denton County, DFW and North Texas.",
+      "mainEntity": {
+        "@type":"ItemList",
+        "name":"CSI service-area page architecture",
+        "numberOfItems":27,
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Denton"},
+          {"@type":"ListItem","position":2,"name":"Lewisville"},
+          {"@type":"ListItem","position":3,"name":"Flower Mound"},
+          {"@type":"ListItem","position":4,"name":"Frisco"},
+          {"@type":"ListItem","position":5,"name":"Little Elm"},
+          {"@type":"ListItem","position":6,"name":"Argyle"},
+          {"@type":"ListItem","position":7,"name":"Aubrey"},
+          {"@type":"ListItem","position":8,"name":"Ponder"},
+          {"@type":"ListItem","position":9,"name":"Dallas"},
+          {"@type":"ListItem","position":10,"name":"Fort Worth"},
+          {"@type":"ListItem","position":11,"name":"McKinney"},
+          {"@type":"ListItem","position":12,"name":"Plano"},
+          {"@type":"ListItem","position":13,"name":"Arlington"},
+          {"@type":"ListItem","position":14,"name":"Irving"},
+          {"@type":"ListItem","position":15,"name":"Carrollton"},
+          {"@type":"ListItem","position":16,"name":"Grapevine"}
+        ]
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://answers.cleansceneinvestigators.com/site-architecture/#page",
+      "url": "https://answers.cleansceneinvestigators.com/site-architecture/",
+      "name": "CSI Main Website Authority Map",
+      "about": {"@id":"https://www.cleansceneinvestigators.com/#website"},
+      "description": "Supplemental machine-readable authority map that reinforces the canonical 50-page CSI website without replacing or duplicating its commercial identity."
+    }
+  ]
+}

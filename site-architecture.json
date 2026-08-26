@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "name": "CSI: Clean Scene Investigators Main Website Authority Map",
+  "canonicalWebsite": "https://www.cleansceneinvestigators.com/",
+  "canonicalSitemap": "https://www.cleansceneinvestigators.com/sitemap.xml",
+  "supplementalAuthoritySite": "https://answers.cleansceneinvestigators.com/",
+  "auditedOn": "2026-08-25",
+  "verifiedPrimaryPageCount": 50,
+  "architecture": {
+    "home": 1,
+    "servicePages": 10,
+    "resourcePages": 6,
+    "serviceAreaPages": 27,
+    "companyAboutPages": 4,
+    "contactPages": 1,
+    "privacyPages": 1,
+    "total": 50
+  },
+  "authorityPolicy": [
+    "The GoDaddy website at cleansceneinvestigators.com is the canonical commercial website and source of truth for the 50-page public architecture.",
+    "answers.cleansceneinvestigators.com is a supplemental educational and machine-readable authority layer, not a replacement website and not a competing local business entity.",
+    "The authority layer must reinforce the actual live-site taxonomy, services, service-area architecture, business identifiers, and canonical URLs.",
+    "Exact service-area URLs must be taken from the canonical live sitemap or live navigation and must never be invented from city names.",
+    "CSI is a mobile service-area business and does not publish a customer-facing street address."
+  ],
+  "verifiedCanonicalPages": [
+    {"category":"home","name":"CSI Home","url":"https://www.cleansceneinvestigators.com/"},
+    {"category":"service","name":"Crime Scene Cleaning","url":"https://www.cleansceneinvestigators.com/crime-scene-cleaning-dfw"},
+    {"category":"service","name":"Biohazard Cleanup","url":"https://www.cleansceneinvestigators.com/biohazard-cleanup-in-dfw"},
+    {"category":"service","name":"Unattended Death Cleanup","url":"https://www.cleansceneinvestigators.com/unattended-death-cleanup"},
+    {"category":"service","name":"Decomposition Cleanup","url":"https://www.cleansceneinvestigators.com/decomposition-cleanup-dfw"},
+    {"category":"service","name":"Blood Cleanup","url":"https://www.cleansceneinvestigators.com/blood-cleanup-dallas-tx"},
+    {"category":"service","name":"Hoarding Cleanup","url":"https://www.cleansceneinvestigators.com/hoarding-cleanup-in-texas"},
+    {"category":"service","name":"Advanced Odor Removal","url":"https://www.cleansceneinvestigators.com/advanced-odor-removal-dfw"},
+    {"category":"service","name":"Vehicle Biohazard Cleanup","url":"https://www.cleansceneinvestigators.com/vehicle-biohazard-dfw-tx"},
+    {"category":"service","name":"Extreme Cleaning Services","url":"https://www.cleansceneinvestigators.com/extreme-cleaning-services"},
+    {"category":"service-area-parent","name":"Service Areas in Texas","url":"https://www.cleansceneinvestigators.com/service-areas-in-texas"},
+    {"category":"resource","name":"Professional Referrals","url":"https://www.cleansceneinvestigators.com/professional-referrals"},
+    {"category":"resource","name":"Property Manager / Landlord Resources","url":"https://www.cleansceneinvestigators.com/property-manager%2Flandlord-1"},
+    {"category":"resource","name":"Safety and Compliance","url":"https://www.cleansceneinvestigators.com/safety-and-compliance"},
+    {"category":"resource","name":"Insurance and Payment Help","url":"https://www.cleansceneinvestigators.com/insurance-%26-payment-help"},
+    {"category":"resource","name":"What to Do After a Scene","url":"https://www.cleansceneinvestigators.com/what-to-do-after-a-scene"},
+    {"category":"resource","name":"Client Reviews","url":"https://www.cleansceneinvestigators.com/client-reviews"},
+    {"category":"company","name":"About CSI","url":"https://www.cleansceneinvestigators.com/about-us"},
+    {"category":"contact","name":"Contact CSI","url":"https://www.cleansceneinvestigators.com/contact-us"}
+  ],
+  "serviceAreaArchitecture": {
+    "pageCount": 27,
+    "parentUrl": "https://www.cleansceneinvestigators.com/service-areas-in-texas",
+    "exactUrlAuthority": "https://www.cleansceneinvestigators.com/sitemap.xml",
+    "knownNamedPriorityMarkets": [
+      "Denton", "Lewisville", "Flower Mound", "Frisco", "Little Elm", "Argyle", "Aubrey", "Ponder",
+      "Dallas", "Fort Worth", "McKinney", "Plano", "Arlington", "Irving", "Carrollton", "Grapevine"
+    ],
+    "additionalVerifiedServiceAreaEntities": ["Krum", "Sanger", "Corinth", "Lake Dallas", "Cross Roads"],
+    "rule": "Do not infer or fabricate city-page slugs. Preserve all 27 canonical live service-area URLs from the main-site sitemap."
+  },
+  "coreSpecialtyScope": [
+    "Crime scene cleanup",
+    "Trauma and biohazard cleanup",
+    "Blood and bodily-fluid cleanup",
+    "Unattended death cleanup",
+    "Decomposition cleanup",
+    "Hoarding cleanup",
+    "Forensic odor removal",
+    "Vehicle biohazard cleanup",
+    "Extreme-mess cleanup"
+  ],
+  "canonicalBusinessIdentifiers": {
+    "legalName": "C&Z Forensics LLC",
+    "businessName": "CSI: Clean Scene Investigators",
+    "phone": "+1-940-654-6334",
+    "email": "dfw.csi.info@gmail.com",
+    "googleMaps": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7",
+    "linkedin": "https://www.linkedin.com/company/csi-clean-scene-investigators"
+  }
+}
