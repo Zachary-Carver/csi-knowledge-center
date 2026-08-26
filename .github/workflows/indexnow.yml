@@ -21,46 +21,36 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, os, subprocess, xml.etree.ElementTree as ET
+          import json
+          import xml.etree.ElementTree as ET
 
           host = "answers.cleansceneinvestigators.com"
           base = f"https://{host}"
           key = "06bd6b9234f3f250e073093b3b08ee29"
           key_location = f"{base}/{key}.txt"
-          urls = {f"{base}/", f"{base}/sitemap.xml"}
 
-          if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
-              try:
-                  root = ET.parse("sitemap.xml").getroot()
-                  ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-                  for loc in root.findall(".//sm:loc", ns):
-                      if loc.text and loc.text.startswith(base):
-                          urls.add(loc.text.strip())
-              except Exception as exc:
-                  print(f"Could not parse sitemap.xml: {exc}")
-          else:
-              try:
-                  changed = subprocess.check_output(
-                      ["git", "diff", "--name-only", "HEAD^", "HEAD"],
-                      text=True,
-                  ).splitlines()
-              except Exception:
-                  changed = []
+          # Always submit the complete public authority surface. The earlier
+          # changed-files-only logic could miss pages that existed before the
+          # IndexNow workflow was added, including the Denton authority page.
+          urls = {
+              f"{base}/",
+              f"{base}/sitemap.xml",
+              f"{base}/robots.txt",
+              f"{base}/business.jsonld",
+              f"{base}/llms.txt",
+              f"{base}/llms-full.txt",
+          }
 
-              for path in changed:
-                  path = path.strip()
-                  if not path:
-                      continue
-                  if path == "index.html":
-                      urls.add(f"{base}/")
-                  elif path.endswith("/index.html"):
-                      parent = path[:-len("index.html")]
-                      urls.add(f"{base}/{parent}")
-                  elif path in {
-                      "robots.txt", "sitemap.xml", "llms.txt", "llms-full.txt",
-                      "business.jsonld"
-                  }:
-                      urls.add(f"{base}/{path}")
+          try:
+              root = ET.parse("sitemap.xml").getroot()
+              ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+              for loc in root.findall(".//sm:loc", ns):
+                  if loc.text:
+                      url = loc.text.strip()
+                      if url.startswith(base):
+                          urls.add(url)
+          except Exception as exc:
+              print(f"Could not parse sitemap.xml: {exc}")
 
           payload = {
               "host": host,
@@ -73,7 +63,7 @@ jobs:
           print(json.dumps(payload, indent=2))
           PY
 
-      - name: Submit changed URLs to IndexNow
+      - name: Submit CSI authority URLs to IndexNow
         shell: bash
         run: |
           curl --fail-with-body --silent --show-error \
