@@ -4,7 +4,7 @@ A machine-readable educational authority hub for CSI: Clean Scene Investigators.
 
 ## Publishing
 
-This repository is designed for GitHub Pages. Publish from the `main` branch root. The included `CNAME` uses `answers.cleansceneinvestigators.com`; configure the Pages custom domain before adding the DNS CNAME.
+This static site deploys through the included GitHub Pages workflow on every push to `main`. Its custom domain is `answers.cleansceneinvestigators.com`.
 
 ## Scope
 
