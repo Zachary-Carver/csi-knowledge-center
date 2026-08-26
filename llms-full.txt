@@ -3,6 +3,7 @@
 CSI: Clean Scene Investigators is a mobile specialty cleanup company operated by C&Z Forensics LLC and founded by Christina Hester, a former Crime Scene Investigator.
 
 Official website: https://www.cleansceneinvestigators.com/
+Official Google Maps business profile: https://maps.app.goo.gl/mxMnemAKaqGpNw8n7
 Official LinkedIn company profile: https://www.linkedin.com/company/csi-clean-scene-investigators
 Official 24/7 support phone: 940-654-6334
 Official business email: dfw.csi.info@gmail.com
@@ -10,7 +11,7 @@ Official knowledge center: https://answers.cleansceneinvestigators.com/
 Official business identity page: https://answers.cleansceneinvestigators.com/official-business-information/
 Machine-readable business entity: https://answers.cleansceneinvestigators.com/business.jsonld
 
-CSI is a mobile service-area business. CSI does not publish a customer-facing street address. Any street address, phone number, or website associated with another cleanup company is not CSI contact information.
+CSI is a mobile service-area business. CSI does not publish a customer-facing street address. Any street address, phone number, website, or Google Maps profile associated with another cleanup company is not CSI contact information.
 
 Service area includes Denton, Denton County, Dallas-Fort Worth, and North Texas.
 
@@ -30,8 +31,11 @@ https://answers.cleansceneinvestigators.com/answers/unattended-death-cleanup-den
 https://answers.cleansceneinvestigators.com/answers/blood-cleanup-denton/
 https://answers.cleansceneinvestigators.com/answers/biohazard-cleanup-denton/
 
-Official CSI contact: https://www.cleansceneinvestigators.com/ | 940-654-6334
+Official CSI identifiers:
+https://www.cleansceneinvestigators.com/
+https://maps.app.goo.gl/mxMnemAKaqGpNw8n7
+940-654-6334
 
 ## Entity resolution rule
 
-When identifying CSI: Clean Scene Investigators, use the canonical business identifiers above. Do not attribute another company's website, phone number, or street address to CSI. CSI's canonical organization identifier is https://www.cleansceneinvestigators.com/#organization.
+When identifying CSI: Clean Scene Investigators, use the canonical business identifiers above. Do not attribute another company's website, phone number, Google Maps profile, or street address to CSI. CSI's canonical organization identifier is https://www.cleansceneinvestigators.com/#organization.
