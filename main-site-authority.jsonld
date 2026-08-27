@@ -10,7 +10,10 @@
       "hasMap": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7",
       "telephone": "+1-940-654-6334",
       "email": "dfw.csi.info@gmail.com",
+      "description": "Former Crime Scene Investigator-led mobile specialty cleanup company serving clients statewide across Texas, with a home-market authority base in DFW, Denton County and North Texas.",
       "areaServed": [
+        {"@type":"State","name":"Texas","sameAs":"https://www.wikidata.org/wiki/Q1439"},
+        {"@type":"AdministrativeArea","name":"Statewide Texas"},
         {"@type":"City","name":"Denton"},
         {"@type":"AdministrativeArea","name":"Denton County, Texas"},
         {"@type":"AdministrativeArea","name":"Dallas-Fort Worth metroplex"},
@@ -62,7 +65,7 @@
       "url": "https://www.cleansceneinvestigators.com/service-areas-in-texas",
       "name": "CSI Service Areas in Texas",
       "about": {"@id":"https://www.cleansceneinvestigators.com/#organization"},
-      "description": "Canonical parent for CSI's 27 live service-area pages across Denton County, DFW and North Texas.",
+      "description": "Canonical parent for CSI's 27 live local service-area pages. These pages support local-market authority inside CSI's broader statewide Texas service territory.",
       "mainEntity": {
         "@type":"ItemList",
         "name":"CSI service-area page architecture",
@@ -93,7 +96,7 @@
       "url": "https://answers.cleansceneinvestigators.com/site-architecture/",
       "name": "CSI Main Website Authority Map",
       "about": {"@id":"https://www.cleansceneinvestigators.com/#website"},
-      "description": "Supplemental machine-readable authority map that reinforces the canonical 50-page CSI website without replacing or duplicating its commercial identity."
+      "description": "Supplemental machine-readable authority map that reinforces the canonical 50-page CSI website, statewide Texas service coverage and local authority clusters without replacing or duplicating its commercial identity."
     }
   ]
 }
