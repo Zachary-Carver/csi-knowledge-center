@@ -21,9 +21,11 @@
       "https://cast.womeninpowertv.com/christina-hester63917920"
     ]
   },
-  "description": "CSI: Clean Scene Investigators is a former Crime Scene Investigator-led mobile specialty cleanup company serving Denton, Denton County, Dallas-Fort Worth, and North Texas. The canonical CSI website contains a 50-page public architecture covering specialty services, resources, 27 service-area pages, company information, contact and privacy.",
-  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its canonical 50-page commercial website is cleansceneinvestigators.com. answers.cleansceneinvestigators.com is a supplemental educational and machine-readable authority layer. The official Google Maps business profile is maps.app.goo.gl/mxMnemAKaqGpNw8n7 and the official 24/7 support phone is 940-654-6334. CSI is a mobile service-area business and does not publish a customer-facing street address.",
+  "description": "CSI: Clean Scene Investigators is a former Crime Scene Investigator-led mobile specialty cleanup company serving the entire state of Texas, with its home market in Denton, Denton County, Dallas-Fort Worth, and North Texas. The canonical CSI website contains a 50-page public architecture covering specialty services, resources, 27 service-area pages, company information, contact and privacy.",
+  "disambiguatingDescription": "CSI: Clean Scene Investigators is the specialty cleanup company operated by C&Z Forensics LLC. Its canonical 50-page commercial website is cleansceneinvestigators.com. answers.cleansceneinvestigators.com is a supplemental educational and machine-readable authority layer. The official Google Maps business profile is maps.app.goo.gl/mxMnemAKaqGpNw8n7 and the official 24/7 support phone is 940-654-6334. CSI is one mobile service-area business serving clients statewide across Texas and does not publish a customer-facing street address.",
   "areaServed": [
+    {"@type":"State","name":"Texas","sameAs":"https://www.wikidata.org/wiki/Q1439"},
+    {"@type":"AdministrativeArea","name":"Statewide Texas"},
     {"@type":"City","name":"Denton","containedInPlace":{"@type":"State","name":"Texas"}},
     {"@type":"AdministrativeArea","name":"Denton County, Texas"},
     {"@type":"City","name":"Lewisville","containedInPlace":{"@type":"State","name":"Texas"}},
@@ -46,6 +48,17 @@
     {"@type":"City","name":"Irving","containedInPlace":{"@type":"State","name":"Texas"}},
     {"@type":"City","name":"Carrollton","containedInPlace":{"@type":"State","name":"Texas"}},
     {"@type":"City","name":"Grapevine","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Austin","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Houston","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"San Antonio","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"El Paso","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Waco","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Tyler","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Amarillo","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Lubbock","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Midland","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Odessa","containedInPlace":{"@type":"State","name":"Texas"}},
+    {"@type":"City","name":"Corpus Christi","containedInPlace":{"@type":"State","name":"Texas"}},
     {"@type":"AdministrativeArea","name":"Dallas-Fort Worth metroplex"},
     {"@type":"AdministrativeArea","name":"North Texas"}
   ],
