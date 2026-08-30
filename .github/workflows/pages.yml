@@ -46,6 +46,45 @@ jobs:
               raise SystemExit("Generated canonical-page HTML index is missing")
           PY
 
+      - name: Inject CSI shield branding and cache-bust visual assets
+        shell: bash
+        env:
+          BUILD_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          version = os.environ["BUILD_SHA"][:12]
+          logo = f'/assets/csi-shield-logo.svg?v={version}'
+          css = f'/assets/style.css?v={version}'
+
+          for path in Path('.').rglob('*.html'):
+              text = path.read_text(encoding='utf-8')
+
+              text = re.sub(r'/assets/style\.css(?:\?v=[^"\']+)?', css, text)
+
+              if 'class="brand"' in text and 'class="brand-logo"' not in text:
+                  text = re.sub(
+                      r'(<a class="brand"[^>]*>)',
+                      r'\1<img class="brand-logo" src="' + logo + r'" alt="CSI: Clean Scene Investigators shield logo" width="50" height="50">',
+                      text,
+                      count=1,
+                  )
+
+              if '<section class="hero"><div class="wrap">' in text and 'class="hero-logo"' not in text:
+                  text = text.replace(
+                      '<section class="hero"><div class="wrap">',
+                      '<section class="hero"><div class="wrap"><img class="hero-logo" src="' + logo + '" alt="CSI: Clean Scene Investigators shield logo" width="300" height="300">',
+                      1,
+                  )
+
+              path.write_text(text, encoding='utf-8')
+
+          print(f'Applied CSI shield branding with cache version {version}')
+          PY
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
       - name: Upload static site
