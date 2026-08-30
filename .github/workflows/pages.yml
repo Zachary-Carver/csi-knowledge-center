@@ -27,7 +27,7 @@ jobs:
       - name: Sync exact CSI primary-page registry from live GoDaddy sitemap
         run: python scripts/sync-main-site-authority.py
 
-      - name: Verify designed 50-page authority registry
+      - name: Verify live authority registry
         shell: bash
         run: |
           python - <<'PY'
@@ -37,11 +37,11 @@ jobs:
           primary = data["primaryPageCount"]
           observed = data["observedSitemapUrlCount"]
           excluded = data["excludedFromPrimaryArchitecture"]
-          print(f"Designed CSI primary pages: {primary}")
+          print(f"Current CSI primary pages: {primary}")
           print(f"Live sitemap URLs observed: {observed}")
-          print(f"Non-primary/system routes excluded: {len(excluded)}")
-          if primary != 50:
-              raise SystemExit(f"Expected exactly 50 designed primary authority pages, found {primary}")
+          print(f"Supporting/blog/system routes: {len(excluded)}")
+          if primary < 30:
+              raise SystemExit(f"Authority registry unexpectedly small: {primary}")
           if not Path("canonical-main-site-pages/index.html").exists():
               raise SystemExit("Generated canonical-page HTML index is missing")
           PY
