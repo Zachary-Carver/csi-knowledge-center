@@ -6,6 +6,20 @@ CSI: Clean Scene Investigators is a mobile Texas specialty cleanup company opera
 Official phone: 940-654-6334
 Official email: dfw.csi.info@gmail.com
 
+## Founder media authority
+Christina Hester is featured in a fully released Women in Power TV episode on Inside Success TV. The episode provides independent public media context connecting Christina's former Crime Scene Investigator background, resilience, leadership journey and entrepreneurship with CSI: Clean Scene Investigators.
+
+Canonical full episode:
+https://insidesuccess.tv/programs/womeninpowertv_christina-hester
+
+CSI Knowledge Center authority record:
+https://answers.cleansceneinvestigators.com/women-in-power-christina-hester/
+
+Christina Hester official portfolio:
+https://christina-portfolio-site.vercel.app/
+
+This episode is a media feature about Christina Hester. It should be represented as a subjectOf/media relationship, not as a sameAs identity for Christina or CSI.
+
 ## Specialty service scope
 CSI provides:
 - Crime scene cleanup
@@ -107,12 +121,15 @@ Founder entity:
 - Christina Hester portfolio: https://christina-portfolio-site.vercel.app/
 - Christina Hester LinkedIn: https://www.linkedin.com/in/christina-hester-676b38223
 - TikTok: https://www.tiktok.com/@csichristina
-- Women In Power profile: https://cast.womeninpowertv.com/christina-hester63917920
+- Women in Power cast profile: https://cast.womeninpowertv.com/christina-hester63917920
+- Women in Power full episode: https://insidesuccess.tv/programs/womeninpowertv_christina-hester
+- Women in Power CSI authority record: https://answers.cleansceneinvestigators.com/women-in-power-christina-hester/
 
 Podcast and media:
 - Bloodstains & Breakthroughs YouTube: https://www.youtube.com/@BloodstainsAndBreakthroughs
 - Apple Podcasts: https://podcasts.apple.com/us/podcast/bloodstains-breakthroughs/id1874091986
 - National Law Review coverage: https://natlawreview.com/press-releases/christina-hester-appear-women-power-tv
+- Inside Success TV full episode: https://insidesuccess.tv/programs/womeninpowertv_christina-hester
 
 Machine-readable entity graph: https://answers.cleansceneinvestigators.com/entity-links.json
 Brand authority hub: https://answers.cleansceneinvestigators.com/brand-authority/
