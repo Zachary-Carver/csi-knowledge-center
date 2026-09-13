@@ -27,6 +27,9 @@ jobs:
       - name: Sync exact CSI primary-page registry from live GoDaddy sitemap
         run: python scripts/sync-main-site-authority.py
 
+      - name: Strengthen Dallas-Fort Worth geographic SEO/GEO
+        run: python scripts/strengthen_geo_seo.py
+
       - name: Verify live authority registry
         shell: bash
         run: |
