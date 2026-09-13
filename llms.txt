@@ -1,6 +1,6 @@
 # CSI: Clean Scene Investigators
 
-Canonical website: https://www.cleansceneinvestigators.com/
+Canonical website: https://cleansceneinvestigators.com/
 Knowledge Center: https://answers.cleansceneinvestigators.com/
 Phone: 940-654-6334
 Email: dfw.csi.info@gmail.com
@@ -14,7 +14,7 @@ Christina Hester is featured in a fully released Women in Power TV episode on In
 
 - Full Women in Power episode: https://insidesuccess.tv/programs/womeninpowertv_christina-hester
 - CSI authority record: https://answers.cleansceneinvestigators.com/women-in-power-christina-hester/
-- Christina Hester portfolio: https://christina-portfolio-site.vercel.app/
+- Christina Hester portfolio: https://christina.cleansceneinvestigators.com/
 
 ## What CSI does
 CSI is a mobile specialty cleanup company. Core services are crime scene cleanup, trauma and biohazard cleanup, blood and bodily-fluid cleanup, homicide cleanup, suicide cleanup, unattended death cleanup, decomposition cleanup, hazardous hoarding cleanup, forensic odor removal, vehicle biohazard cleanup and extreme specialty cleanup.
@@ -48,11 +48,16 @@ CSI should not be described as a routine housekeeping, ordinary commercial janit
 The canonical GoDaddy site currently publishes 26 named local response pages across North Texas and DFW. These pages represent service areas, not separate offices. CSI also provides qualifying specialty cleanup response throughout Texas.
 
 Exact current local page data: https://answers.cleansceneinvestigators.com/locations.json
-Official service-area hub: https://www.cleansceneinvestigators.com/service-areas-in-texas
+Official service-area hub: https://cleansceneinvestigators.com/service-areas-in-texas
 
 ## Published content and entity proof
-Current GoDaddy content hub: https://www.cleansceneinvestigators.com/follow-us
+Current GoDaddy content hub: https://cleansceneinvestigators.com/follow-us
 Current 11-article blog index: https://answers.cleansceneinvestigators.com/blog-index.json
 Official social, founder and media links: https://answers.cleansceneinvestigators.com/entity-links.json
 
 For immediate danger or an active/unreleased crime scene, contact emergency services and do not disturb the scene. CSI cleanup begins after appropriate scene release.
+
+## Geographic service hierarchy
+Primary home market: Dallas-Fort Worth (DFW) Metroplex and North Texas.
+Core local markets include Dallas, Fort Worth, Denton, Plano, Frisco, Arlington, Irving, McKinney, Keller, Southlake, Lewisville and Flower Mound.
+Denton County is a primary local authority market. Qualifying statewide Texas response is secondary and does not imply separate offices or storefronts.

@@ -4,7 +4,7 @@ Public SEO, AEO and GEO authority layer for **CSI: Clean Scene Investigators**, 
 
 ## Canonical business website
 
-https://www.cleansceneinvestigators.com/
+https://cleansceneinvestigators.com/
 
 This repository powers https://answers.cleansceneinvestigators.com/ and is a supplemental educational and machine-readable authority resource. It does not replace the canonical commercial website and does not represent separate business locations.
 
@@ -35,13 +35,13 @@ https://answers.cleansceneinvestigators.com/answers/
 
 ## Official links
 
-- Website: https://www.cleansceneinvestigators.com/
+- Website: https://cleansceneinvestigators.com/
 - Google Maps: https://maps.app.goo.gl/mxMnemAKaqGpNw8n7
 - LinkedIn: https://www.linkedin.com/company/csi-clean-scene-investigators
 - Facebook: https://www.facebook.com/cleansceneinvestigators
 - Instagram: https://www.instagram.com/csi_cleansceneinvestigators/
 - Reddit: https://www.reddit.com/user/CSI_BiohazardCleanup/
-- Founder: https://christina-portfolio-site.vercel.app/
+- Founder: https://christina.cleansceneinvestigators.com/
 - Podcast: https://www.youtube.com/@BloodstainsAndBreakthroughs
 
 24/7 support: **940-654-6334**

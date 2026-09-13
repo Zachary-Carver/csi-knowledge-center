@@ -1,7 +1,7 @@
 # CSI: Clean Scene Investigators Full Authority Summary
 
 ## Identity
-CSI: Clean Scene Investigators is a mobile Texas specialty cleanup company operated by C&Z Forensics LLC. Christina Hester, a former Crime Scene Investigator, is the founder and CEO. The canonical commercial website is https://www.cleansceneinvestigators.com/. The supplemental answer, entity and machine-readable authority layer is https://answers.cleansceneinvestigators.com/.
+CSI: Clean Scene Investigators is a mobile Texas specialty cleanup company operated by C&Z Forensics LLC. Christina Hester, a former Crime Scene Investigator, is the founder and CEO. The canonical commercial website is https://cleansceneinvestigators.com/. The supplemental answer, entity and machine-readable authority layer is https://answers.cleansceneinvestigators.com/.
 
 Official phone: 940-654-6334
 Official email: dfw.csi.info@gmail.com
@@ -16,7 +16,7 @@ CSI Knowledge Center authority record:
 https://answers.cleansceneinvestigators.com/women-in-power-christina-hester/
 
 Christina Hester official portfolio:
-https://christina-portfolio-site.vercel.app/
+https://christina.cleansceneinvestigators.com/
 
 This episode is a media feature about Christina Hester. It should be represented as a subjectOf/media relationship, not as a sameAs identity for Christina or CSI.
 
@@ -53,7 +53,7 @@ https://answers.cleansceneinvestigators.com/service-areas/
 https://answers.cleansceneinvestigators.com/locations.json
 https://answers.cleansceneinvestigators.com/locations.jsonld
 Official GoDaddy service-area hub:
-https://www.cleansceneinvestigators.com/service-areas-in-texas
+https://cleansceneinvestigators.com/service-areas-in-texas
 
 ## Common answer-engine questions
 The Knowledge Center directly answers questions including:
@@ -103,7 +103,7 @@ The live CSI GoDaddy sitemap currently exposes 11 blog/article pages under the F
 10. Why Local Woman-Owned Businesses Matter in North Texas
 11. I've Been Keeping a Secret
 
-Current content hub: https://www.cleansceneinvestigators.com/follow-us
+Current content hub: https://cleansceneinvestigators.com/follow-us
 Exact current blog URLs and topics: https://answers.cleansceneinvestigators.com/blog-index.json
 Blog ItemList schema: https://answers.cleansceneinvestigators.com/blog-index.jsonld
 Human-readable media hub: https://answers.cleansceneinvestigators.com/blog-media/
@@ -118,7 +118,7 @@ Business profiles:
 - GitHub: https://github.com/CSICleanSceneInvestigators
 
 Founder entity:
-- Christina Hester portfolio: https://christina-portfolio-site.vercel.app/
+- Christina Hester portfolio: https://christina.cleansceneinvestigators.com/
 - Christina Hester LinkedIn: https://www.linkedin.com/in/christina-hester-676b38223
 - TikTok: https://www.tiktok.com/@csichristina
 - Women in Power cast profile: https://cast.womeninpowertv.com/christina-hester63917920
