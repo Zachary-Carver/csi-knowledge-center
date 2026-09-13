@@ -19,6 +19,7 @@ REGION = "Dallas-Fort Worth (DFW) Metroplex"
 REGION_SCHEMA = "Dallas-Fort Worth Metroplex, Texas"
 NORTH_TEXAS = "North Texas"
 PHONE = "940-654-6334"
+LOGO = MAIN + "/assets/local/dce997b862bdca765a11.png"
 
 GEO_BLOCK = re.compile(r"\n?<!-- CSI GEO SEO START -->.*?<!-- CSI GEO SEO END -->\n?", re.S)
 GEO_SCHEMA = re.compile(r"\n?<!-- CSI GEO SCHEMA START -->.*?<!-- CSI GEO SCHEMA END -->\n?", re.S)
@@ -35,6 +36,59 @@ SERVICE_META = {
 }
 
 TOP_CITIES = ["Dallas", "Fort Worth", "Denton", "Plano", "Frisco", "Arlington", "Irving", "McKinney", "Keller", "Southlake", "Lewisville", "Flower Mound"]
+
+META_OVERRIDES = {
+    "answers/after-police-release-crime-scene/index.html": "After police release a scene, restrict access, identify the authorized decision-maker and contact a specialty cleanup provider serving DFW and North Texas.",
+    "answers/biohazard-cleanup-denton/index.html": "24/7 crime scene, trauma, blood, unattended-death and biohazard cleanup in Denton, within the Dallas-Fort Worth (DFW) and North Texas service area.",
+    "answers/bleach-blood-cleanup/index.html": "Learn why bleach alone may not safely address hidden or porous blood contamination and when professional cleanup is needed in DFW and North Texas.",
+    "answers/blood-cleanup-denton/index.html": "Specialty blood and bodily-fluid cleanup in Denton, Texas and Denton County, within CSI's Dallas-Fort Worth and North Texas service area.",
+    "answers/is-dried-blood-still-a-biohazard/index.html": "Dried blood may remain hazardous. Learn when affected surfaces need professional assessment and remediation across DFW and North Texas.",
+    "answers/landlord-after-tenant-death/index.html": "After a tenant death, confirm scene release, restrict access and arrange specialty remediation with a DFW and North Texas cleanup provider.",
+    "answers/unattended-death-cleanup-denton/index.html": "Unattended-death and decomposition cleanup in Denton and Denton County, within CSI's Dallas-Fort Worth and North Texas service area.",
+    "answers/who-cleans-after-unattended-death/index.html": "After authorities release the property, a specialty biohazard company—not police or a funeral home—handles cleanup across DFW and North Texas.",
+    "answers/who-cleans-blood-after-police-leave/index.html": "After police release a scene, owners or authorized representatives arrange professional blood cleanup across DFW and North Texas.",
+    "answers/who-cleans-crime-scene-denton/index.html": "Who cleans a crime scene in Denton after police leave? CSI provides 24/7 specialty remediation across Dallas-Fort Worth and North Texas.",
+    "answers/index.html": "Answers about crime scene, blood, biohazard, unattended-death, hoarding, vehicle and odor cleanup across Dallas-Fort Worth and North Texas.",
+    "blog-media/index.html": "Official CSI educational content, media, podcast and social profiles supporting crime scene and biohazard cleanup authority across DFW and North Texas.",
+    "crime-scene-cleanup-denton/index.html": "24/7 crime scene, trauma, blood and biohazard cleanup in Denton and Denton County, within Dallas-Fort Worth (DFW) and North Texas.",
+    "official-business-information/index.html": "Official CSI identity, contact details and specialty cleanup scope for Dallas-Fort Worth and North Texas, with statewide Texas response secondary.",
+    "service-areas/index.html": "CSI's primary service area is Dallas-Fort Worth (DFW) and North Texas, followed by named cities and qualifying statewide Texas response.",
+    "services/index.html": "CSI crime scene, trauma, blood, unattended-death, hoarding, odor and vehicle biohazard cleanup across Dallas-Fort Worth and North Texas.",
+    "site-architecture/index.html": "CSI authority map connecting the canonical website, specialty services, DFW and North Texas locations, answers and supporting content.",
+    "women-in-power-christina-hester/index.html": "Christina Hester, former Crime Scene Investigator and CSI founder, is featured in Women in Power on Inside Success TV.",
+}
+
+
+def reconcile_schema(value):
+    if isinstance(value, list):
+        return [reconcile_schema(item) for item in value]
+    if not isinstance(value, dict):
+        return value
+    for key, item in list(value.items()):
+        value[key] = reconcile_schema(item)
+    kind = value.get("@type")
+    if isinstance(kind, list) and "LocalBusiness" in kind:
+        value["@type"] = [item for item in kind if item != "LocalBusiness"]
+        kind = value["@type"]
+    elif kind == "LocalBusiness":
+        value["@type"] = "Organization"
+        kind = "Organization"
+    kinds = kind if isinstance(kind, list) else [kind]
+    if "Organization" in kinds:
+        value["logo"] = {"@type": "ImageObject", "url": LOGO, "width": 180, "height": 180}
+    return value
+
+
+def reconcile_html_schema(source: str) -> str:
+    pattern = re.compile(r'(<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)', re.I | re.S)
+    def replace(match: re.Match[str]) -> str:
+        try:
+            data = json.loads(html.unescape(match.group(2)))
+        except (json.JSONDecodeError, TypeError):
+            return match.group(0)
+        data = reconcile_schema(data)
+        return match.group(1) + json.dumps(data, separators=(",", ":"), ensure_ascii=False) + match.group(3)
+    return pattern.sub(replace, source)
 
 
 def esc_attr(value: str) -> str:
@@ -125,7 +179,7 @@ def update_html(path: Path) -> bool:
 
     if rel == "index.html":
         title = "Dallas-Fort Worth Crime Scene Cleanup Answers | CSI Knowledge Center"
-        desc = f"Answer-first CSI Knowledge Center for crime scene, trauma and biohazard cleanup across the {REGION} and {NORTH_TEXAS}, with qualifying statewide Texas response."
+        desc = f"CSI answers about crime scene, trauma and biohazard cleanup across Dallas-Fort Worth (DFW) and {NORTH_TEXAS}, with statewide Texas response secondary."
         source = set_title(source, title)
         source = set_meta(source, "description", desc)
         source = source.replace("Texas crime scene, trauma and biohazard answers", "Dallas-Fort Worth (DFW) &amp; North Texas crime scene, trauma and biohazard answers")
@@ -135,21 +189,25 @@ def update_html(path: Path) -> bool:
         source = source.replace("mobile specialty cleanup serving Texas.", "mobile specialty cleanup serving the Dallas-Fort Worth Metroplex and North Texas, with qualifying statewide Texas response.")
     elif rel == "service-areas/index.html":
         source = set_title(source, "Dallas-Fort Worth & North Texas Cleanup Service Areas | CSI")
-        source = set_meta(source, "description", f"CSI's primary crime scene and biohazard service area is the {REGION} and {NORTH_TEXAS}, with named local markets and qualifying statewide Texas response.")
+        source = set_meta(source, "description", f"CSI's primary crime scene and biohazard service area is Dallas-Fort Worth (DFW) and {NORTH_TEXAS}, followed by named cities and statewide Texas response.")
         source = source.replace("CSI is a mobile specialty cleanup company serving Texas. Denton, Denton County, Dallas-Fort Worth and North Texas are the home market.", "CSI is a mobile specialty cleanup company whose primary home market is the Dallas-Fort Worth (DFW) Metroplex and North Texas, including Denton and Denton County.")
         source = source.replace("Exact canonical city pages", "Dallas-Fort Worth and North Texas local service markets")
     elif rel == "services/index.html":
         source = set_title(source, "Dallas-Fort Worth Crime Scene & Biohazard Services | CSI Answers")
-        source = set_meta(source, "description", f"CSI specialty cleanup services across the {REGION} and {NORTH_TEXAS}: crime scene, trauma, blood, unattended death, decomposition, hoarding, odor and vehicle biohazards.")
+        source = set_meta(source, "description", f"CSI crime scene, trauma, blood, unattended-death, hoarding, odor and vehicle biohazard cleanup across Dallas-Fort Worth and {NORTH_TEXAS}.")
     elif Path(rel).parent.name in SERVICE_META:
         title, service = SERVICE_META[Path(rel).parent.name]
         source = set_title(source, title)
         source = set_meta(source, "description", f"CSI provides 24/7 {service} across the {REGION} and {NORTH_TEXAS}, with qualifying statewide Texas response. Call {PHONE}.")
     elif city:
-        source = set_meta(source, "description", f"CSI provides 24/7 crime scene, biohazard, blood, unattended death and decomposition cleanup in {city}, Texas, within the {REGION} and {NORTH_TEXAS}.")
+        source = set_meta(source, "description", f"24/7 crime scene, blood, unattended-death and biohazard cleanup in {city}, within Dallas-Fort Worth (DFW) and {NORTH_TEXAS}.")
+
+    if rel in META_OVERRIDES:
+        source = set_meta(source, "description", META_OVERRIDES[rel])
 
     url = canonical(source) or "https://answers.cleansceneinvestigators.com/"
     source = inject_geo(source, url, city)
+    source = reconcile_html_schema(source)
 
     if source != original:
         path.write_text(source, encoding="utf-8")
@@ -168,6 +226,11 @@ def update_machine_files() -> None:
         except UnicodeDecodeError:
             continue
         new = text.replace("https://www.cleansceneinvestigators.com", MAIN).replace("https://christina-portfolio-site.vercel.app", PORTFOLIO)
+        if path.suffix.lower() in {".json", ".jsonld"}:
+            try:
+                new = json.dumps(reconcile_schema(json.loads(new)), separators=(",", ":"), ensure_ascii=False)
+            except json.JSONDecodeError:
+                pass
         if new != text:
             path.write_text(new, encoding="utf-8")
 
@@ -175,6 +238,7 @@ def update_machine_files() -> None:
     if business.exists():
         data = json.loads(business.read_text(encoding="utf-8"))
         data["url"] = MAIN + "/"
+        data = reconcile_schema(data)
         data["description"] = f"Former Crime Scene Investigator-led mobile specialty cleanup company serving the {REGION} and {NORTH_TEXAS} for crime scene, trauma, biohazard, blood, homicide, suicide, unattended death, decomposition, hazardous hoarding, forensic odor and vehicle biohazard cleanup, with qualifying statewide Texas response."
         founder = data.get("founder", {})
         if isinstance(founder, dict):

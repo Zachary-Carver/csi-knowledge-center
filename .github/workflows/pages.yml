@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,6 +29,19 @@ jobs:
 
       - name: Strengthen Dallas-Fort Worth geographic SEO/GEO
         run: python scripts/strengthen_geo_seo.py
+
+      - name: Persist normalized authority source to main
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No source normalization changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Normalize CSI geographic authority source"
+          git push origin HEAD:main
 
       - name: Verify live authority registry
         shell: bash
