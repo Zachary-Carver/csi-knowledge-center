@@ -175,6 +175,7 @@ def update_html(path: Path) -> bool:
 
     source = source.replace("https://www.cleansceneinvestigators.com", MAIN)
     source = source.replace("https://christina-portfolio-site.vercel.app", PORTFOLIO)
+    source = source.replace("christina-portfolio-site.vercel.app", "christina.cleansceneinvestigators.com")
     city = city_from_path(path)
 
     if rel == "index.html":
@@ -198,7 +199,7 @@ def update_html(path: Path) -> bool:
     elif Path(rel).parent.name in SERVICE_META:
         title, service = SERVICE_META[Path(rel).parent.name]
         source = set_title(source, title)
-        source = set_meta(source, "description", f"CSI provides 24/7 {service} across the {REGION} and {NORTH_TEXAS}, with qualifying statewide Texas response. Call {PHONE}.")
+        source = set_meta(source, "description", f"24/7 {service} across Dallas-Fort Worth (DFW) and {NORTH_TEXAS}. Qualifying statewide Texas response. Call {PHONE}.")
     elif city:
         source = set_meta(source, "description", f"24/7 crime scene, blood, unattended-death and biohazard cleanup in {city}, within Dallas-Fort Worth (DFW) and {NORTH_TEXAS}.")
 
