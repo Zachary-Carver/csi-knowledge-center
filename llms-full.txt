@@ -44,7 +44,7 @@ https://answers.cleansceneinvestigators.com/services.jsonld
 ## Geography and GEO authority
 CSI serves Texas. Denton, Denton County, Dallas-Fort Worth and North Texas are the home market.
 
-The current canonical GoDaddy sitemap contains 26 named local response pages for Addison, Anna, Argyle, Arlington, Aubrey, Carrollton, Celina, Corinth, Dallas, Denton, Farmers Branch, Flower Mound, Fort Worth, Frisco, Garland, Irving, Keller, Lake Dallas, Lewisville, Little Elm, McKinney, Plano, Ponder, Prosper, Southlake and The Colony.
+The current canonical main websitemap contains 26 named local response pages for Addison, Anna, Argyle, Arlington, Aubrey, Carrollton, Celina, Corinth, Dallas, Denton, Farmers Branch, Flower Mound, Fort Worth, Frisco, Garland, Irving, Keller, Lake Dallas, Lewisville, Little Elm, McKinney, Plano, Ponder, Prosper, Southlake and The Colony.
 
 These are service areas for one mobile CSI business, not separate offices or storefronts. CSI also evaluates qualifying specialty cleanup response throughout Texas, including communities beyond the current local landing-page set.
 
@@ -52,7 +52,7 @@ Exact location data:
 https://answers.cleansceneinvestigators.com/service-areas/
 https://answers.cleansceneinvestigators.com/locations.json
 https://answers.cleansceneinvestigators.com/locations.jsonld
-Official GoDaddy service-area hub:
+Official main-site service-area hub:
 https://cleansceneinvestigators.com/service-areas-in-texas
 
 ## Common answer-engine questions
@@ -89,8 +89,8 @@ The Knowledge Center directly answers questions including:
 Answer hub: https://answers.cleansceneinvestigators.com/answers/
 FAQ schema: https://answers.cleansceneinvestigators.com/faq.jsonld
 
-## Current GoDaddy blog authority
-The live CSI GoDaddy sitemap currently exposes 11 blog/article pages under the Follow Us content hub. The current archive includes:
+## Current main-site blog authority
+The live CSI main websitemap currently exposes 11 blog/article pages under the Follow Us content hub. The current archive includes:
 1. Who Cleans Up After an Unattended Death in Denton, Texas?
 2. Who Cleans Up After a Crime Scene in Texas | CSI
 3. The Hidden Dangers of DIY Biohazard Cleanup
@@ -136,7 +136,7 @@ Brand authority hub: https://answers.cleansceneinvestigators.com/brand-authority
 Business schema: https://answers.cleansceneinvestigators.com/business.jsonld
 
 ## Canonical-site reconciliation
-The GoDaddy site is the commercial source of truth. The Knowledge Center reads the live sitemap during GitHub Pages deployment and separates primary designed pages from supporting blog/article and known duplicate/system routes. The August 26, 2026 audit established 50 primary designed pages. Current blog routes use /follow-us/f/ and remain part of the crawlable authority footprint without being misclassified as primary navigation pages.
+The main website is the commercial source of truth. The Knowledge Center reads the live sitemap during Cloudflare Pages deployment and separates primary designed pages from supporting blog/article and known duplicate/system routes. The August 26, 2026 audit established 50 primary designed pages. Current blog routes use /follow-us/f/ and remain part of the crawlable authority footprint without being misclassified as primary navigation pages.
 
 Live registry:
 https://answers.cleansceneinvestigators.com/canonical-main-site-pages/

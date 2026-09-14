@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate CSI canonical-site authority artifacts from the live GoDaddy sitemap.
+"""Generate CSI canonical-site authority artifacts from the live main websitemap.
 
 The August 26, 2026 audit established a 50-primary-page baseline. The commercial
-site may grow, while GoDaddy blog/article and known system routes remain separate
+site may grow, while blog/article and known system routes remain separate
 supporting authority. Each deployment re-reads the live sitemap, validates required
 canonical pages, records drift, and publishes the exact current registry.
 """
@@ -13,17 +13,17 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
-ROOT_SITEMAP = "https://www.cleansceneinvestigators.com/sitemap.xml"
+ROOT_SITEMAP = "https://cleansceneinvestigators.com/sitemap.xml"
 ALLOWED_HOSTS = {"cleansceneinvestigators.com", "www.cleansceneinvestigators.com"}
 BASELINE_PRIMARY_COUNT = 50
 BASELINE_DATE = "2026-08-26"
 NON_PRIMARY_PATHS = {
-    "/home": "Duplicate GoDaddy home route; canonical home is /.",
-    "/ols/products": "GoDaddy Online Store system/catalog route; not a designed CSI authority page.",
+    "/home": "Duplicate legacy home route; canonical home is /.",
+    "/ols/products": "Legacy store system/catalog route; not a designed CSI authority page.",
 }
 CONTENT_PREFIXES = {
-    "/f/": "GoDaddy blog/article route; indexable supporting content, tracked separately from designed primary pages.",
-    "/follow-us/f/": "GoDaddy blog/article route under the current Follow Us content hub; indexable supporting content, tracked separately from designed primary pages.",
+    "/f/": "Legacy blog/article route; indexable supporting content, tracked separately from designed primary pages.",
+    "/follow-us/f/": "Blog/article route under the current Follow Us content hub; indexable supporting content, tracked separately from designed primary pages.",
 }
 REQUIRED_CANONICAL_PATHS = {
     "/", "/crime-scene-cleaning-dfw", "/biohazard-cleanup-in-dfw",
@@ -57,7 +57,7 @@ def crawl_sitemap(url: str, seen: set[str], pages: list[str]) -> None:
 def normalize(url: str) -> str:
     p=urlparse(url); path=p.path or "/"
     if path!="/" and path.endswith("/"): path=path[:-1]
-    return "https://www.cleansceneinvestigators.com"+path+(f"?{p.query}" if p.query else "")
+    return "https://cleansceneinvestigators.com"+path+(f"?{p.query}" if p.query else "")
 
 def page_label(url: str) -> str:
     path=urlparse(url).path.strip("/")
@@ -82,13 +82,11 @@ def write_html(primary,observed,excluded,added,removed,generated_at):
     OUT_HTML.parent.mkdir(parents=True,exist_ok=True)
     schema=json.dumps({"@context":"https://schema.org","@type":"ItemList","@id":"https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#list","name":"CSI current canonical main-site page registry","numberOfItems":len(primary),"itemListElement":[{"@type":"ListItem","position":i,"name":page_label(u),"url":u} for i,u in enumerate(primary,1)]},separators=(",",":"))
     excluded_html="".join(f'<li><a href="{html.escape(x["url"])}">{html.escape(x["url"])}</a> — {html.escape(x["reason"])}</li>' for x in excluded) or "<li>None</li>"
-    content=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSI Main Website Pages | Live Canonical Registry</title><meta name="description" content="Live-synchronized registry of CSI: Clean Scene Investigators main-site URLs from the canonical GoDaddy sitemap, with blog and system routes identified separately."><meta name="robots" content="index,follow,max-snippet:-1"><link rel="canonical" href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages/"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{schema}</script></head><body><header><div class="wrap nav"><a class="brand" href="/">CSI <span>KNOWLEDGE CENTER</span></a><nav><a href="/services/">Services</a><a href="/service-areas/">Cities</a><a href="/answers/">Questions</a><a href="/blog-media/">Blog & Media</a></nav></div></header><main><section class="hero"><div class="wrap"><p class="eyebrow">Synchronized from the live canonical sitemap</p><h1>CSI's current main-site URL registry</h1><p class="lead">This page is regenerated during every deployment from the live GoDaddy sitemap. Primary navigation pages and supporting blog content are preserved as different authority layers rather than mixed together.</p><div class="answer"><strong>Current designed primary URLs: {len(primary)}</strong><br>All URLs observed in sitemap: {len(observed)}<br>Supporting blog/system routes tracked separately: {len(excluded)}<br>Historical audited primary baseline: {BASELINE_PRIMARY_COUNT} on {BASELINE_DATE}<br>Generated: {html.escape(generated_at)}</div></div></section><section class="light"><div class="wrap"><h2>Current canonical primary pages</h2><ol>{render_list(primary)}</ol></div></section><section><div class="wrap"><h2>Supporting blog and system routes</h2><p>These URLs remain part of CSI's crawlable authority footprint but are not counted as designed primary pages.</p><ul>{excluded_html}</ul><p>Machine-readable versions: <a href="/canonical-main-site-pages.json">JSON</a> · <a href="/canonical-main-site-pages.txt">plain text</a>.</p></div></section></main><footer><div class="wrap"><strong>CSI: Clean Scene Investigators</strong> · 940-654-6334 · dfw.csi.info@gmail.com</div></footer></body></html>'''
+    content=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSI Main Website Pages | Live Canonical Registry</title><meta name="description" content="Live-synchronized registry of CSI: Clean Scene Investigators main-site URLs from the canonical main websitemap, with blog and system routes identified separately."><meta name="robots" content="index,follow,max-snippet:-1"><link rel="canonical" href="https://answers.cleansceneinvestigators.com/canonical-main-site-pages/"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{schema}</script></head><body><header><div class="wrap nav"><a class="brand" href="/">CSI <span>KNOWLEDGE CENTER</span></a><nav><a href="/services/">Services</a><a href="/service-areas/">Cities</a><a href="/answers/">Questions</a><a href="/blog-media/">Blog & Media</a></nav></div></header><main><section class="hero"><div class="wrap"><p class="eyebrow">Synchronized from the live canonical sitemap</p><h1>CSI's current main-site URL registry</h1><p class="lead">This page is regenerated during every deployment from the live main websitemap. Primary navigation pages and supporting blog content are preserved as different authority layers rather than mixed together.</p><div class="answer"><strong>Current designed primary URLs: {len(primary)}</strong><br>All URLs observed in sitemap: {len(observed)}<br>Supporting blog/system routes tracked separately: {len(excluded)}<br>Historical audited primary baseline: {BASELINE_PRIMARY_COUNT} on {BASELINE_DATE}<br>Generated: {html.escape(generated_at)}</div></div></section><section class="light"><div class="wrap"><h2>Current canonical primary pages</h2><ol>{render_list(primary)}</ol></div></section><section><div class="wrap"><h2>Supporting blog and system routes</h2><p>These URLs remain part of CSI's crawlable authority footprint but are not counted as designed primary pages.</p><ul>{excluded_html}</ul><p>Machine-readable versions: <a href="/canonical-main-site-pages.json">JSON</a> · <a href="/canonical-main-site-pages.txt">plain text</a>.</p></div></section></main><footer><div class="wrap"><strong>CSI: Clean Scene Investigators</strong> · 940-654-6334 · dfw.csi.info@gmail.com</div></footer></body></html>'''
     content = content.replace(
-        "Live-synchronized registry of CSI: Clean Scene Investigators main-site URLs from the canonical GoDaddy sitemap, with blog and system routes identified separately.",
+        "Live-synchronized registry of CSI: Clean Scene Investigators main-site URLs from the canonical main websitemap, with blog and system routes identified separately.",
         "Live CSI main-site URL registry for Dallas-Fort Worth and North Texas, with supporting blog and system routes tracked separately.",
     )
-    content = content.replace("canonical GoDaddy sitemap", "canonical main-site sitemap")
-    content = content.replace("live GoDaddy sitemap", "live main-site sitemap")
     OUT_HTML.write_text(content,encoding="utf-8")
 
 def main() -> int:
@@ -103,7 +101,7 @@ def main() -> int:
     if len(primary)<30: raise RuntimeError(f"Live sitemap returned only {len(primary)} primary URLs; refusing likely incomplete crawl.")
     if missing: raise RuntimeError(f"Required canonical CSI paths missing from live sitemap: {missing}")
     added=sorted(set(primary)-previous); removed=sorted(previous-set(primary)); generated_at=datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    payload={"name":"CSI live canonical main-site registry","source":ROOT_SITEMAP,"generatedAt":generated_at,"historicalAuditedBaseline":{"date":BASELINE_DATE,"primaryPageCount":BASELINE_PRIMARY_COUNT},"observedSitemapUrlCount":len(observed),"primaryPageCount":len(primary),"supportingContentAndSystemRouteCount":len(excluded),"canonicalUrls":primary,"observedSitemapUrls":observed,"excludedFromPrimaryArchitecture":excluded,"changeFromCheckedInBaseline":{"added":added,"removed":removed},"authorityRule":"Use canonicalUrls as the current live main-site registry. Supporting GoDaddy blog routes and known system/duplicate routes remain crawlable authority but are tracked separately. Never invent city or service URLs."}
+    payload={"name":"CSI live canonical main-site registry","source":ROOT_SITEMAP,"generatedAt":generated_at,"historicalAuditedBaseline":{"date":BASELINE_DATE,"primaryPageCount":BASELINE_PRIMARY_COUNT},"observedSitemapUrlCount":len(observed),"primaryPageCount":len(primary),"supportingContentAndSystemRouteCount":len(excluded),"canonicalUrls":primary,"observedSitemapUrls":observed,"excludedFromPrimaryArchitecture":excluded,"changeFromCheckedInBaseline":{"added":added,"removed":removed},"authorityRule":"Use canonicalUrls as the current live main-site registry. Supporting blog routes and known system/duplicate routes remain crawlable authority but are tracked separately. Never invent city or service URLs."}
     OUT_JSON.write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
     OUT_TXT.write_text("# CSI current canonical main-site URLs\n# Source: "+ROOT_SITEMAP+f"\n# Current primary URLs: {len(primary)}; observed sitemap URLs: {len(observed)}; supporting/blog/system: {len(excluded)}\n"+"\n".join(primary)+"\n",encoding="utf-8")
     write_html(primary,observed,excluded,added,removed,generated_at)

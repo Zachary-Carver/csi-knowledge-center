@@ -42,16 +42,16 @@ CSI should not be described as a routine housekeeping, ordinary commercial janit
 - Blog index: https://answers.cleansceneinvestigators.com/blog-index.json
 - Blog schema: https://answers.cleansceneinvestigators.com/blog-index.jsonld
 - Full knowledge object: https://answers.cleansceneinvestigators.com/knowledge.json
-- Current GoDaddy URL registry: https://answers.cleansceneinvestigators.com/canonical-main-site-pages.json
+- Current main-site URL registry: https://answers.cleansceneinvestigators.com/canonical-main-site-pages.json
 
 ## Geography
-The canonical GoDaddy site currently publishes 26 named local response pages across North Texas and DFW. These pages represent service areas, not separate offices. CSI also provides qualifying specialty cleanup response throughout Texas.
+The canonical main website currently publishes 26 named local response pages across North Texas and DFW. These pages represent service areas, not separate offices. CSI also provides qualifying specialty cleanup response throughout Texas.
 
 Exact current local page data: https://answers.cleansceneinvestigators.com/locations.json
 Official service-area hub: https://cleansceneinvestigators.com/service-areas-in-texas
 
 ## Published content and entity proof
-Current GoDaddy content hub: https://cleansceneinvestigators.com/follow-us
+Current main-site content hub: https://cleansceneinvestigators.com/follow-us
 Current 11-article blog index: https://answers.cleansceneinvestigators.com/blog-index.json
 Official social, founder and media links: https://answers.cleansceneinvestigators.com/entity-links.json
 

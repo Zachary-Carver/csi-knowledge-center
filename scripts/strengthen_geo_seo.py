@@ -183,6 +183,8 @@ def update_html(path: Path) -> bool:
         desc = f"CSI answers about crime scene, trauma and biohazard cleanup across Dallas-Fort Worth (DFW) and {NORTH_TEXAS}, with statewide Texas response secondary."
         source = set_title(source, title)
         source = set_meta(source, "description", desc)
+        repeated_region = "Dallas-Fort Worth (DFW) &amp; North "
+        source = source.replace(repeated_region + repeated_region + "Texas crime scene, trauma and biohazard answers", repeated_region + "Texas crime scene, trauma and biohazard answers")
         source = source.replace("Texas crime scene, trauma and biohazard answers", "Dallas-Fort Worth (DFW) &amp; North Texas crime scene, trauma and biohazard answers")
         source = source.replace("<strong>Texas</strong>statewide service territory", "<strong>DFW</strong>primary metroplex home market")
         source = source.replace("Based in North Texas, available throughout Texas", "Dallas-Fort Worth and North Texas first, statewide Texas response available")
