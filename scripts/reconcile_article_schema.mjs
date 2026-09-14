@@ -9,6 +9,7 @@ const IMAGE = {
   caption: 'CSI: Clean Scene Investigators shield logo',
 };
 const FAVICON = '<link rel="icon" href="/assets/csi-shield-logo.svg" type="image/svg+xml">';
+const LONG_IDENTIFIER_FIX = '<style>.official{overflow-wrap:anywhere}</style>';
 
 function files(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -54,6 +55,9 @@ for (const file of files(ROOT)) {
     });
   if (!/<link\b[^>]*rel=["'][^"']*icon/i.test(source)) {
     source = source.replace('</head>', FAVICON + '</head>');
+  }
+  if (file.endsWith(path.join('brand-authority', 'index.html')) && !source.includes(LONG_IDENTIFIER_FIX)) {
+    source = source.replace('</head>', LONG_IDENTIFIER_FIX + '</head>');
   }
   if (source !== original) {
     fs.writeFileSync(file, source);
