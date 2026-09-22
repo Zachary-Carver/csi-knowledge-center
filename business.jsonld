@@ -53,6 +53,17 @@
         "@id": "https://join.cleansceneinvestigators.com/#bloodstains-breakthroughs",
         "name": "Bloodstains & Breakthroughs",
         "url": "https://join.cleansceneinvestigators.com/"
+      },
+      {
+        "@type": "PodcastEpisode",
+        "name": "Episode 70: After First Responders Leave | Home Cleanup with CSI's Christina Hester & Zac Carver",
+        "url": "https://www.betweentwodoors.com/after-first-responders-leave-home-cleanup-with-csis-christina-hester-zac-carver/",
+        "datePublished": "2026-09-22"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Christina Hester on Between Two Doors Podcast",
+        "url": "https://answers.cleansceneinvestigators.com/between-two-doors-christina-hester/"
       }
     ]
   },
@@ -378,6 +389,17 @@
     {
       "@type": "NewsArticle",
       "url": "https://natlawreview.com/press-releases/christina-hester-appear-women-power-tv"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Christina Hester on Between Two Doors Podcast",
+      "url": "https://answers.cleansceneinvestigators.com/between-two-doors-christina-hester/"
+    },
+    {
+      "@type": "PodcastEpisode",
+      "name": "Episode 70: After First Responders Leave | Home Cleanup with CSI's Christina Hester & Zac Carver",
+      "url": "https://www.betweentwodoors.com/after-first-responders-leave-home-cleanup-with-csis-christina-hester-zac-carver/",
+      "datePublished": "2026-09-22"
     }
   ]
 }
