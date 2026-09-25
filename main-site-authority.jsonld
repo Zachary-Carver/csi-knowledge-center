@@ -64,14 +64,7 @@
       "url": "https://cleansceneinvestigators.com/",
       "name": "CSI: Clean Scene Investigators",
       "publisher": {
-        "@id": "https://cleansceneinvestigators.com/#organization",
-        "legalName": "C&Z Forensics LLC",
-        "disambiguatingDescription": "CSI: Clean Scene Investigators is an independent Texas specialty crime scene, trauma and biohazard remediation company operated by C&Z Forensics LLC and founded by former Crime Scene Investigator Christina Hester.",
-        "founder": {
-          "@id": "https://christina.cleansceneinvestigators.com/#christina-hester",
-          "@type": "Person",
-          "name": "Christina Hester"
-        }
+        "@id": "https://cleansceneinvestigators.com/#organization"
       }
     },
     {
