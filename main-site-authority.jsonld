@@ -1,1 +1,106 @@
-{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://cleansceneinvestigators.com/#organization","name":"CSI: Clean Scene Investigators","legalName":"C&Z Forensics LLC","url":"https://cleansceneinvestigators.com/","hasMap":"https://maps.app.goo.gl/mxMnemAKaqGpNw8n7","telephone":"+1-940-654-6334","email":"dfw.csi.info@gmail.com","founder":{"@type":"Person","name":"Christina Hester","url":"https://christina.cleansceneinvestigators.com/"},"description":"Former Crime Scene Investigator-led mobile specialty cleanup company serving Texas, with Denton, Denton County, Dallas-Fort Worth and North Texas as its home market.","areaServed":[{"@type":"State","name":"Texas"},{"@type":"AdministrativeArea","name":"North Texas"},{"@type":"AdministrativeArea","name":"Dallas-Fort Worth metroplex"},{"@type":"AdministrativeArea","name":"Denton County, Texas"},{"@type":"City","name":"Denton"}],"subjectOf":[{"@id":"https://answers.cleansceneinvestigators.com/site-architecture/#page"},{"@id":"https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#dataset"}],"logo":{"@type":"ImageObject","url":"https://cleansceneinvestigators.com/assets/local/dce997b862bdca765a11.png","width":180,"height":180}},{"@type":"WebSite","@id":"https://cleansceneinvestigators.com/#website","url":"https://cleansceneinvestigators.com/","name":"CSI: Clean Scene Investigators","publisher":{"@id":"https://cleansceneinvestigators.com/#organization"}},{"@type":"Dataset","@id":"https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#dataset","name":"CSI live canonical main-site registry","url":"https://answers.cleansceneinvestigators.com/canonical-main-site-pages/","distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://answers.cleansceneinvestigators.com/canonical-main-site-pages.json"},{"@type":"DataDownload","encodingFormat":"text/plain","contentUrl":"https://answers.cleansceneinvestigators.com/canonical-main-site-pages.txt"}]},{"@type":"CollectionPage","@id":"https://answers.cleansceneinvestigators.com/site-architecture/#page","url":"https://answers.cleansceneinvestigators.com/site-architecture/","name":"CSI Main Website Authority Map","about":{"@id":"https://cleansceneinvestigators.com/#website"},"description":"Supplemental live-synchronized authority map connecting CSI's canonical website, specialty services, Texas service areas, direct answers, brand identity and supporting content."}]}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
+      "@id": "https://cleansceneinvestigators.com/#organization",
+      "name": "CSI: Clean Scene Investigators",
+      "legalName": "C&Z Forensics LLC",
+      "url": "https://cleansceneinvestigators.com/",
+      "hasMap": "https://maps.app.goo.gl/mxMnemAKaqGpNw8n7",
+      "telephone": "+1-940-654-6334",
+      "email": "dfw.csi.info@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Christina Hester",
+        "url": "https://christina.cleansceneinvestigators.com/",
+        "@id": "https://christina.cleansceneinvestigators.com/#christina-hester"
+      },
+      "description": "Former Crime Scene Investigator-led mobile specialty cleanup company serving Texas, with Denton, Denton County, Dallas-Fort Worth and North Texas as its home market.",
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "Texas"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "North Texas"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Dallas-Fort Worth metroplex"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Denton County, Texas"
+        },
+        {
+          "@type": "City",
+          "name": "Denton"
+        }
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://answers.cleansceneinvestigators.com/site-architecture/#page"
+        },
+        {
+          "@id": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#dataset"
+        }
+      ],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cleansceneinvestigators.com/assets/local/dce997b862bdca765a11.png",
+        "width": 180,
+        "height": 180
+      },
+      "disambiguatingDescription": "CSI: Clean Scene Investigators is an independent Texas specialty crime scene, trauma and biohazard remediation company operated by C&Z Forensics LLC and founded by former Crime Scene Investigator Christina Hester."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://cleansceneinvestigators.com/#website",
+      "url": "https://cleansceneinvestigators.com/",
+      "name": "CSI: Clean Scene Investigators",
+      "publisher": {
+        "@id": "https://cleansceneinvestigators.com/#organization",
+        "legalName": "C&Z Forensics LLC",
+        "disambiguatingDescription": "CSI: Clean Scene Investigators is an independent Texas specialty crime scene, trauma and biohazard remediation company operated by C&Z Forensics LLC and founded by former Crime Scene Investigator Christina Hester.",
+        "founder": {
+          "@id": "https://christina.cleansceneinvestigators.com/#christina-hester",
+          "@type": "Person",
+          "name": "Christina Hester"
+        }
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#dataset",
+      "name": "CSI live canonical main-site registry",
+      "url": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages/",
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages.json"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "text/plain",
+          "contentUrl": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages.txt"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://answers.cleansceneinvestigators.com/site-architecture/#page",
+      "url": "https://answers.cleansceneinvestigators.com/site-architecture/",
+      "name": "CSI Main Website Authority Map",
+      "about": {
+        "@id": "https://cleansceneinvestigators.com/#website"
+      },
+      "description": "Supplemental live-synchronized authority map connecting CSI's canonical website, specialty services, Texas service areas, direct answers, brand identity and supporting content."
+    }
+  ]
+}
