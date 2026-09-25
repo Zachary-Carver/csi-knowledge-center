@@ -1,0 +1,78 @@
+name: CSI entity schema cleanup pass
+
+on:
+  push:
+    paths:
+      - '.github/workflows/entity-hardening-repair.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clean references and enforce canonical definitions
+        run: |
+          python - <<'PY'
+          import json,pathlib,re
+          ORG_ID='https://cleansceneinvestigators.com/#organization'
+          PERSON_ID='https://christina.cleansceneinvestigators.com/#christina-hester'
+          DESC='CSI: Clean Scene Investigators is an independent Texas specialty crime scene, trauma and biohazard remediation company operated by C&Z Forensics LLC and founded by former Crime Scene Investigator Christina Hester.'
+          REF_POLLUTION={'legalName','disambiguatingDescription','founder'}
+          ENTITY_MARKERS={'@type','name','url','telephone','email','logo','areaServed','foundingDate','description','sameAs','hasMap','slogan','hasOfferCatalog','knowsAbout','subjectOf','address','contactPoint'}
+          def tset(d):
+              t=d.get('@type') if isinstance(d,dict) else None
+              return set(t if isinstance(t,list) else [t] if t else [])
+          def patch(v):
+              changed=False
+              if isinstance(v,dict):
+                  if v.get('@id')==ORG_ID and not any(k in v for k in ENTITY_MARKERS):
+                      for k in list(REF_POLLUTION):
+                          if k in v: del v[k]; changed=True
+                  is_org=('Organization' in tset(v) and v.get('name')=='CSI: Clean Scene Investigators') or (v.get('@id')==ORG_ID and any(k in v for k in ENTITY_MARKERS))
+                  if is_org:
+                      if v.get('@id')!=ORG_ID: v['@id']=ORG_ID; changed=True
+                      if v.get('legalName')!='C&Z Forensics LLC': v['legalName']='C&Z Forensics LLC'; changed=True
+                      if v.get('disambiguatingDescription')!=DESC: v['disambiguatingDescription']=DESC; changed=True
+                      f=v.get('founder')
+                      if isinstance(f,dict):
+                          if f.get('@id')!=PERSON_ID: f['@id']=PERSON_ID; changed=True
+                          if not f.get('@type'): f['@type']='Person'; changed=True
+                          if not f.get('name'): f['name']='Christina Hester'; changed=True
+                      elif not f:
+                          v['founder']={'@id':PERSON_ID,'@type':'Person','name':'Christina Hester'}; changed=True
+                  if 'Person' in tset(v) and v.get('name')=='Christina Hester' and v.get('@id')!=PERSON_ID:
+                      v['@id']=PERSON_ID; changed=True
+                  for child in list(v.values()):
+                      if patch(child): changed=True
+              elif isinstance(v,list):
+                  for child in v:
+                      if patch(child): changed=True
+              return changed
+          touched=[]
+          for p in pathlib.Path('.').rglob('*.jsonld'):
+              try: data=json.loads(p.read_text(encoding='utf-8'))
+              except Exception: continue
+              if patch(data): p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); touched.append(str(p))
+          rx=re.compile(r'(<script[^>]+type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)',re.I|re.S)
+          for p in pathlib.Path('.').rglob('*.html'):
+              text=p.read_text(encoding='utf-8')
+              def repl(m):
+                  try: data=json.loads(m.group(2).strip())
+                  except Exception: return m.group(0)
+                  if patch(data): return m.group(1)+json.dumps(data,ensure_ascii=False,separators=(',',':'))+m.group(3)
+                  return m.group(0)
+              new=rx.sub(repl,text)
+              if new!=text: p.write_text(new,encoding='utf-8'); touched.append(str(p))
+          print('Patched',len(set(touched)),'files')
+          PY
+      - name: Commit cleanup
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'CSI Schema Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -u
+          git commit -m 'Clean canonical entity references and retain hardened schema [skip ci]'
+          git push
