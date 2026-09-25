@@ -1,0 +1,100 @@
+name: One-time CSI entity schema hardening
+
+on:
+  push:
+    paths:
+      - '.github/workflows/entity-hardening-oneoff.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize canonical CSI entity schema
+        run: |
+          python - <<'PY'
+          import json, pathlib, re
+
+          ORG_ID = 'https://cleansceneinvestigators.com/#organization'
+          PERSON_ID = 'https://christina.cleansceneinvestigators.com/#christina-hester'
+          DESC = 'CSI: Clean Scene Investigators is an independent Texas specialty crime scene, trauma and biohazard remediation company operated by C&Z Forensics LLC and founded by former Crime Scene Investigator Christina Hester.'
+
+          def type_set(v):
+              t = v.get('@type') if isinstance(v, dict) else None
+              return set(t if isinstance(t, list) else [t] if t else [])
+
+          def patch(v):
+              changed = False
+              if isinstance(v, dict):
+                  is_org = v.get('@id') == ORG_ID or ('Organization' in type_set(v) and v.get('name') == 'CSI: Clean Scene Investigators')
+                  if is_org:
+                      if v.get('@id') != ORG_ID:
+                          v['@id'] = ORG_ID; changed = True
+                      if v.get('legalName') != 'C&Z Forensics LLC':
+                          v['legalName'] = 'C&Z Forensics LLC'; changed = True
+                      if v.get('disambiguatingDescription') != DESC:
+                          v['disambiguatingDescription'] = DESC; changed = True
+                      founder = v.get('founder')
+                      if isinstance(founder, dict):
+                          if founder.get('@id') != PERSON_ID:
+                              founder['@id'] = PERSON_ID; changed = True
+                          if not founder.get('@type'):
+                              founder['@type'] = 'Person'; changed = True
+                          if not founder.get('name'):
+                              founder['name'] = 'Christina Hester'; changed = True
+                      elif not founder:
+                          v['founder'] = {'@id': PERSON_ID, '@type': 'Person', 'name': 'Christina Hester'}; changed = True
+                  if 'Person' in type_set(v) and v.get('name') == 'Christina Hester' and v.get('@id') != PERSON_ID:
+                      v['@id'] = PERSON_ID; changed = True
+                  for child in list(v.values()):
+                      if patch(child): changed = True
+              elif isinstance(v, list):
+                  for child in v:
+                      if patch(child): changed = True
+              return changed
+
+          touched = []
+
+          for p in pathlib.Path('.').rglob('*.jsonld'):
+              try:
+                  data = json.loads(p.read_text(encoding='utf-8'))
+              except Exception:
+                  continue
+              if patch(data):
+                  p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+                  touched.append(str(p))
+
+          rx = re.compile(r'(<script[^>]+type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)', re.I | re.S)
+          for p in pathlib.Path('.').rglob('*.html'):
+              text = p.read_text(encoding='utf-8')
+              def repl(m):
+                  raw = m.group(2).strip()
+                  try:
+                      data = json.loads(raw)
+                  except Exception:
+                      return m.group(0)
+                  if patch(data):
+                      return m.group(1) + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + m.group(3)
+                  return m.group(0)
+              new = rx.sub(repl, text)
+              if new != text:
+                  p.write_text(new, encoding='utf-8')
+                  touched.append(str(p))
+
+          print('Patched files:', len(set(touched)))
+          for x in sorted(set(touched)): print(x)
+          PY
+      - name: Commit hardened schema
+        run: |
+          if git diff --quiet; then
+            echo 'No schema changes needed.'
+            exit 0
+          fi
+          git config user.name 'CSI Schema Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -u
+          git commit -m 'Harden CSI canonical organization and founder schema [skip ci]'
+          git push
