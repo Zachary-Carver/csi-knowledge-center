@@ -48,6 +48,11 @@
         },
         {
           "@id": "https://answers.cleansceneinvestigators.com/canonical-main-site-pages/#dataset"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://answers.cleansceneinvestigators.com/business-stories-magazine-christina-hester/",
+          "url": "https://answers.cleansceneinvestigators.com/business-stories-magazine-christina-hester/"
         }
       ],
       "logo": {
