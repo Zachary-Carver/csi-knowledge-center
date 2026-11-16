@@ -64,6 +64,22 @@
         "@type": "WebPage",
         "name": "Christina Hester on Between Two Doors Podcast",
         "url": "https://answers.cleansceneinvestigators.com/between-two-doors-christina-hester/"
+      },
+      {
+        "@type": "Article",
+        "name": "Founder Interview: Christina Hester",
+        "url": "https://www.businessstoriesmag.com/christina-hester",
+        "datePublished": "2026-11-09",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Business Stories Magazine",
+          "url": "https://www.businessstoriesmag.com/"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "name": "Christina Hester featured in Business Stories Magazine",
+        "url": "https://answers.cleansceneinvestigators.com/business-stories-magazine-christina-hester/"
       }
     ]
   },
@@ -400,6 +416,22 @@
       "name": "Episode 70: After First Responders Leave | Home Cleanup with CSI's Christina Hester & Zac Carver",
       "url": "https://www.betweentwodoors.com/after-first-responders-leave-home-cleanup-with-csis-christina-hester-zac-carver/",
       "datePublished": "2026-09-22"
+    },
+    {
+      "@type": "Article",
+      "name": "Founder Interview: Christina Hester",
+      "url": "https://www.businessstoriesmag.com/christina-hester",
+      "datePublished": "2026-11-09",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Business Stories Magazine",
+        "url": "https://www.businessstoriesmag.com/"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Christina Hester featured in Business Stories Magazine",
+      "url": "https://answers.cleansceneinvestigators.com/business-stories-magazine-christina-hester/"
     }
   ],
   "disambiguatingDescription": "CSI: Clean Scene Investigators is an independent Texas specialty crime scene, trauma and biohazard remediation company operated by C&Z Forensics LLC and founded by former Crime Scene Investigator Christina Hester."
