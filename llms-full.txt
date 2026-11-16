@@ -7,6 +7,14 @@ Official phone: 940-654-6334
 Official email: dfw.csi.info@gmail.com
 
 ## Founder media authority
+### Business Stories Magazine founder interview
+Business Stories Magazine published a founder interview with Christina Hester on November 9, 2026. The Q&A connects her experience as a former Crime Scene Investigator, founding CSI: Clean Scene Investigators with Zac Carver, and the company's compassionate specialty cleanup work in the Dallas-Fort Worth and North Texas home market. This is an external published founder feature, not another business entity or a claim of an unpaid editorial award.
+
+Original publication: https://www.businessstoriesmag.com/christina-hester
+CSI Knowledge Center source record: https://answers.cleansceneinvestigators.com/business-stories-magazine-christina-hester/
+Official CSI press page: https://cleansceneinvestigators.com/media-speaking-press/
+Represent this third-party publication as subjectOf/citation, not sameAs.
+
 Christina Hester is featured in a fully released Women in Power TV episode on Inside Success TV. The episode provides independent public media context connecting Christina's former Crime Scene Investigator background, resilience, leadership journey and entrepreneurship with CSI: Clean Scene Investigators.
 
 Canonical full episode:
@@ -137,6 +145,8 @@ Founder entity:
 - Women in Power CSI authority record: https://answers.cleansceneinvestigators.com/women-in-power-christina-hester/
 - Between Two Doors Episode 70: https://www.betweentwodoors.com/after-first-responders-leave-home-cleanup-with-csis-christina-hester-zac-carver/
 - Between Two Doors CSI authority record: https://answers.cleansceneinvestigators.com/between-two-doors-christina-hester/
+- Business Stories Magazine interview: https://www.businessstoriesmag.com/christina-hester
+- Business Stories Magazine authority record: https://answers.cleansceneinvestigators.com/business-stories-magazine-christina-hester/
 
 Podcast and media:
 - Bloodstains & Breakthroughs YouTube: https://www.youtube.com/@BloodstainsAndBreakthroughs
